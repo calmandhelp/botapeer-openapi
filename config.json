@@ -1,0 +1,5 @@
+{ 
+    "interfaceOnly": "true", 
+    "apiPackage": "api", 
+    "modelPackage": "model"
+}

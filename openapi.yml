@@ -4,12 +4,14 @@ info:
   description: Botapeer API
   version: 1.0.0
 servers:
-  - url: http://localhost:8081
-  - url: http://api.botapeer.com
+  - url: http://localhost:8081/api
+  - url: http://api.botapeer.com/api
 paths:
-  '/api/users':
+  '/users':
     get:
       operationId: get-users
+      tags:
+        - User
       summary: User API
       description: User一覧を取得
       parameters:
@@ -20,8 +22,6 @@ paths:
           schema:
             type: string
             example: taro
-      tags:
-        - User
       responses:
         '200':
           description: ok
