@@ -17,7 +17,7 @@ jobs:
             git config --local user.name "github-actions[bot]"
             git add .
             git commit -m "Generated code"
-      - name: 生成コードのコミット
+      - name: 生成コードのプッシュ
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.ACTION_TOKEN }}
