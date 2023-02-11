@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのチェックアウト
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
       - name: typescriptのコード生成
         run: make generate-docker-typescript
       - name: springのコード生成
