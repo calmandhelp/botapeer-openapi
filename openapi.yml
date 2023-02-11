@@ -90,6 +90,8 @@ paths:
       tags:
         - User
       description: 任意のUserを更新
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: userId
@@ -99,13 +101,13 @@ paths:
             type: string
             example: 1
       requestBody:
-       required: true
-       content:
-        multipart/form-data:
+        required: true
+        content:
+          multipart/form-data:
             schema:
               properties:
                 formData:
-                  $ref: '#/components/schemas/UpdateUserRequest'
+                  $ref: '#/components/schemas/UpdateUserFormData'
                 profileImage:
                   type: string
                   format: binary
@@ -132,11 +134,9 @@ paths:
               description: HTTPステータス
               schema:
                 type: integer
-
 components:
   schemas:
-    UpdateUserRequest:
-      type: object
+    UpdateUserFormData:
       properties:
         name:
           type: string
@@ -144,15 +144,10 @@ components:
           type: string
         description:
           type: string
-        profileImage:
-          type: string
-        coverImage:
-          type: string
       required:
         - name
         - email
     User:
-      type: object
       properties:
         id:
           type: integer
@@ -167,8 +162,8 @@ components:
         profileImage:
           type: string
         coverImage:
-          type: string
-    UserResponse: 
+          type: string       
+    UserResponse:
       $ref: '#/components/schemas/User'
     ErrorResponse:
       properties:
@@ -184,3 +179,8 @@ components:
               type: integer
             message:
               type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
