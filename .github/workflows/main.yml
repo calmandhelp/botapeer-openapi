@@ -21,4 +21,4 @@ jobs:
       - name: 生成コードのコミット
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.ACTION_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
