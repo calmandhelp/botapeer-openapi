@@ -134,6 +134,35 @@ paths:
               description: HTTPステータス
               schema:
                 type: integer
+    delete:
+      operationId: deleteUser
+      tags:
+        - User
+      description: 任意のUserを削除
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          description: ユーザーID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: 401(Unauthorized)
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer                
 components:
   schemas:
     UpdateUserFormData:
