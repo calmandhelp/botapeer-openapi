@@ -1,13 +1,9 @@
 export * from '../model/ErrorInner';
 export * from '../model/ErrorResponse';
-export * from '../model/UpdateUserFormData';
-export * from '../model/UpdateUserRequest';
 export * from '../model/User';
 
 import { ErrorInner } from '../model/ErrorInner';
 import { ErrorResponse } from '../model/ErrorResponse';
-import { UpdateUserFormData } from '../model/UpdateUserFormData';
-import { UpdateUserRequest } from '../model/UpdateUserRequest';
 import { User } from '../model/User';
 
 /* tslint:disable:no-unused-variable */
@@ -35,8 +31,6 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "ErrorInner": ErrorInner,
     "ErrorResponse": ErrorResponse,
-    "UpdateUserFormData": UpdateUserFormData,
-    "UpdateUserRequest": UpdateUserRequest,
     "User": User,
 }
 

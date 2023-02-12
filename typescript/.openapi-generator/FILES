@@ -13,8 +13,6 @@ index.ts
 middleware.ts
 model/ErrorInner.ts
 model/ErrorResponse.ts
-model/UpdateUserFormData.ts
-model/UpdateUserRequest.ts
 model/User.ts
 models/ObjectSerializer.ts
 models/all.ts

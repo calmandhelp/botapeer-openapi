@@ -3,8 +3,6 @@ import { Configuration} from '../configuration'
 
 import { ErrorInner } from '../model/ErrorInner';
 import { ErrorResponse } from '../model/ErrorResponse';
-import { UpdateUserFormData } from '../model/UpdateUserFormData';
-import { UpdateUserRequest } from '../model/UpdateUserRequest';
 import { User } from '../model/User';
 import { ObservableUserApi } from './ObservableAPI';
 
