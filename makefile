@@ -16,7 +16,7 @@ generate-docker-spring: $(openapi) $(config)
 		-g spring \
 		-o /local/spring \
 		-c /local/$(config) \
-		--global-property skipFormModel=false
+		--global-property skipFormModel=false \
 		--global-property skipFormModel=false \
 		--global-property skipDefaultInterface=true \
 		--global-property beanValidation=true \
