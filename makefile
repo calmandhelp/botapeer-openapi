@@ -17,11 +17,13 @@ generate-docker-spring: $(openapi) $(config)
 		-o /local/spring \
 		-c /local/$(config) \
 		--global-property skipFormModel=false
+		--global-property skipFormModel=false \
+		--global-property skipDefaultInterface=true \
+		--global-property beanValidation=true \
 
 generate-docker-typescript: $(openapi) $(config) 
 	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -i /local/$(openapi) \
     -g typescript \
     -o /local/typescript \
-		-c /local/$(config) \
-		--global-property skipFormModel=false
+		-c /local/$(config)
