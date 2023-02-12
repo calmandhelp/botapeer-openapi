@@ -11,8 +11,8 @@ jobs:
         run: make generate-docker-typescript
       - name: springのコード生成
         run: make generate-docker-spring
-      - name: springのコード生成
-        run: cd spring && mvn package
+      - name: jarファイル生成
+        run: cd spring && mvn clean package
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
