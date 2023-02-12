@@ -23,6 +23,29 @@ export class ObservableUserApi {
     }
 
     /**
+     * 任意のUserを削除
+     * @param userId ユーザーID
+     */
+    public deleteUser(userId: string, _options?: Configuration): Observable<User> {
+        const requestContextPromise = this.requestFactory.deleteUser(userId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteUser(rsp)));
+            }));
+    }
+
+    /**
      * 任意のUserを取得
      * @param userId ユーザーID
      */

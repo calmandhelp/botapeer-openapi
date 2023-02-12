@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-12T13:50:42.427012Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-12T14:19:17.765209Z[Etc/UTC]")
 @Validated
 @Tag(name = "users", description = "the users API")
 public interface UsersApi {
@@ -42,6 +42,50 @@ public interface UsersApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
+
+    /**
+     * DELETE /users/{userId}
+     * 任意のUserを削除
+     *
+     * @param userId ユーザーID (required)
+     * @return ok (status code 200)
+     *         or 401(Unauthorized) (status code 401)
+     */
+    @Operation(
+        operationId = "deleteUser",
+        description = "任意のUserを削除",
+        tags = { "User" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "401(Unauthorized)")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/users/{userId}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<User> deleteUser(
+        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"coverImage\" : \"coverImage\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : 0, \"profileImage\" : \"profileImage\", \"email\" : \"email\", \"status\" : 6 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
 
     /**
      * GET /users/{userId}
