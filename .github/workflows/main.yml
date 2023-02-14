@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのチェックアウト
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: typescriptのコード生成
         run: make generate-docker-typescript
       - name: JDK 11のセットアップ
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: 11
           distribution: 'adopt'
@@ -22,7 +22,14 @@ jobs:
       - name: jarファイル生成（Mavenでビルド）
         run: cd spring && mvn clean package
       - name: mavenパッケージのデプロイ
-        run: cd spring && mvn deploy
+        run: cd spring && mvn deploy \
+            -Dmaven.deploy.skip=true \
+            -Dmaven.javadoc.skip=true -B -V -P release \
+            -Dgithub.registry.username=${{ github.actor }} \
+            -Dgithub.registry.repository=OWNER/REPO \
+            -Dgithub.repository=$GITHUB_REPOSITORY \
+            -Dgithub.username=$GITHUB_ACTOR \
+            -Dgithub.token=${{ secrets.ACTION_TOKEN }}
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
