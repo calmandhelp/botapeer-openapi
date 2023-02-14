@@ -13,19 +13,16 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: 'adopt'
+          server-id: 'github'
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.ACTION_TOKEN }}
       - name: springのコード生成
         run: make generate-docker-spring
       - name: jarファイル生成（Mavenでビルド）
         run: cd spring && mvn clean package
-      - name: GitHub Packagesへデプロイ
-        run: mvn deploy \
-            -Dmaven.deploy.skip=true \
-            -Dmaven.javadoc.skip=true -B -V -P release \
-            -Dgithub.registry.username=${{ github.actor }} \
-            -Dgithub.registry.repository=OWNER/REPO \
-            -Dgithub.repository=$GITHUB_REPOSITORY \
-            -Dgithub.username=$GITHUB_ACTOR \
-            -Dgithub.token=${{ secrets.ACTION_TOKEN }}     
+      - name: mavenパッケージのデプロイ
+        run: mvn --batch-mode deploy
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
