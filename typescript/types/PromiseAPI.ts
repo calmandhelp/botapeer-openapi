@@ -19,6 +19,15 @@ export class PromiseUserApi {
     }
 
     /**
+     * 任意のUserを削除
+     * @param userId ユーザーID
+     */
+    public deleteUser(userId: string, _options?: Configuration): Promise<User> {
+        const result = this.api.deleteUser(userId, _options);
+        return result.toPromise();
+    }
+
+    /**
      * 任意のUserを取得
      * @param userId ユーザーID
      */

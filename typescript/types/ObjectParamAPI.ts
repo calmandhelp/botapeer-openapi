@@ -8,6 +8,15 @@ import { User } from '../model/User';
 import { ObservableUserApi } from "./ObservableAPI";
 import { UserApiRequestFactory, UserApiResponseProcessor} from "../apis/UserApi";
 
+export interface UserApiDeleteUserRequest {
+    /**
+     * ユーザーID
+     * @type string
+     * @memberof UserApideleteUser
+     */
+    userId: string
+}
+
 export interface UserApiFindUserRequest {
     /**
      * ユーザーID
@@ -58,6 +67,14 @@ export class ObjectUserApi {
 
     public constructor(configuration: Configuration, requestFactory?: UserApiRequestFactory, responseProcessor?: UserApiResponseProcessor) {
         this.api = new ObservableUserApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * 任意のUserを削除
+     * @param param the request object
+     */
+    public deleteUser(param: UserApiDeleteUserRequest, options?: Configuration): Promise<User> {
+        return this.api.deleteUser(param.userId,  options).toPromise();
     }
 
     /**
