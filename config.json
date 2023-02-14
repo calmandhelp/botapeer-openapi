@@ -1,5 +1,6 @@
 { 
     "interfaceOnly": "true", 
     "modelPackage": "model",
-    "apiPackage": "api"
+    "apiPackage": "api",
+    "artifactVersion": "1.0.1"
 }
