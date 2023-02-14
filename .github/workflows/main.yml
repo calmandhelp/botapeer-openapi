@@ -22,7 +22,7 @@ jobs:
       - name: jarファイル生成（Mavenでビルド）
         run: cd spring && mvn clean package
       - name: mavenパッケージのデプロイ
-        run: mvn --batch-mode deploy
+        run: cd spring && mvn deploy
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
