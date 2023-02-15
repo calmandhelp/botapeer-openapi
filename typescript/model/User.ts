@@ -14,8 +14,8 @@ import { HttpFile } from '../http/http';
 
 export class User {
     'id'?: number;
-    'name'?: string;
-    'email'?: string;
+    'name': string;
+    'email': string;
     'status'?: number;
     'description'?: string;
     'profileImage'?: string;
@@ -40,7 +40,7 @@ export class User {
             "name": "email",
             "baseName": "email",
             "type": "string",
-            "format": ""
+            "format": "email"
         },
         {
             "name": "status",
