@@ -4,6 +4,6 @@
     "apiPackage": "api",
     "groupId": "com.openapi.botapeer",
     "artifactId": "botapeer-openapi",
-    "projectVersion": "1.0.1",
+    "artifactVersion": "1.0.1",
     "name": "botapeer-openapi"
 }
