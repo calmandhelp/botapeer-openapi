@@ -22,7 +22,7 @@ jobs:
       - name: jarファイル生成（Mavenでビルド）
         run: cd spring && mvn clean package
       - name: mavenパッケージのデプロイ
-        run: cd spring && mvn deploy -Dmaven.deploy.skip=true -Dmaven.javadoc.skip=true -B -V -P release -Dgithub.registry.username=${{ github.actor }} -Dgithub.registry.repository=OWNER/REPO -Dgithub.repository=$GITHUB_REPOSITORY -Dgithub.username=$GITHUB_ACTOR -Dgithub.token=${{ secrets.ACTION_TOKEN }}
+        run: cd spring && mvn deploy
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"

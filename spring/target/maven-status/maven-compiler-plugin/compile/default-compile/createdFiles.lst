@@ -1,7 +1,7 @@
 api/ApiUtil.class
 model/UpdateUserRequest.class
 api/UsersApi.class
-model/UpdateUserFormData.class
 model/User.class
+model/UpdateUserFormData.class
 model/ErrorInner.class
 model/ErrorResponse.class

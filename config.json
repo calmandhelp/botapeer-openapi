@@ -2,5 +2,7 @@
     "interfaceOnly": "true", 
     "modelPackage": "model",
     "apiPackage": "api",
-    "artifactVersion": "1.0.1"
+    "groupId": "com.openapi.botapeer",
+    "artifactId": "botapeer-openapi",
+    "name": "botapeer-openapi"
 }
