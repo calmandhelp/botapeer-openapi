@@ -20,6 +20,8 @@ jobs:
         run: cd spring && mvn clean package
       - name: mavenパッケージのデプロイ
         run: cd spring && mvn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
