@@ -17,11 +17,11 @@ export interface UserApiDeleteUserRequest {
     userId: string
 }
 
-export interface UserApiFindUserRequest {
+export interface UserApiFindUserByIdRequest {
     /**
      * ユーザーID
      * @type string
-     * @memberof UserApifindUser
+     * @memberof UserApifindUserById
      */
     userId: string
 }
@@ -81,8 +81,8 @@ export class ObjectUserApi {
      * 任意のUserを取得
      * @param param the request object
      */
-    public findUser(param: UserApiFindUserRequest, options?: Configuration): Promise<User> {
-        return this.api.findUser(param.userId,  options).toPromise();
+    public findUserById(param: UserApiFindUserByIdRequest, options?: Configuration): Promise<User> {
+        return this.api.findUserById(param.userId,  options).toPromise();
     }
 
     /**

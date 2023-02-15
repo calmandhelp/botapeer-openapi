@@ -49,8 +49,8 @@ export class ObservableUserApi {
      * 任意のUserを取得
      * @param userId ユーザーID
      */
-    public findUser(userId: string, _options?: Configuration): Observable<User> {
-        const requestContextPromise = this.requestFactory.findUser(userId, _options);
+    public findUserById(userId: string, _options?: Configuration): Observable<User> {
+        const requestContextPromise = this.requestFactory.findUserById(userId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -64,7 +64,7 @@ export class ObservableUserApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findUser(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findUserById(rsp)));
             }));
     }
 
