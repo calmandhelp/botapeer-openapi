@@ -14,9 +14,6 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
-          server-id: 'github'
-          server-username: ${{ github.actor }}
-          server-password: ${{ secrets.ACTION_TOKEN }}
       - name: springのコード生成
         run: make generate-docker-spring
       - name: jarファイル生成（Mavenでビルド）
