@@ -19,7 +19,6 @@ generate-docker-spring: $(openapi) $(config)
 		-t /local/templates/JavaSpring \
 		--library spring-boot \
 		--global-property skipFormModel=false \
-		--global-property skipDefaultInterface=true \
 		--global-property beanValidation=true
 
 generate-docker-typescript: $(openapi) $(config) 

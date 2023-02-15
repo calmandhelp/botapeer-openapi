@@ -34,14 +34,10 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T08:40:05.000806Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T11:20:25.193688Z[Etc/UTC]")
 @Validated
 @Tag(name = "users", description = "the users API")
 public interface UsersApi {
-
-    default Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
 
     /**
      * DELETE /users/{userId}
@@ -70,21 +66,9 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<User> deleteUser(
+    ResponseEntity<User> deleteUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"coverImage\" : \"coverImage\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : 0, \"profileImage\" : \"profileImage\", \"email\" : \"email\", \"status\" : 6 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 
     /**
@@ -117,21 +101,9 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<User> findUser(
+    ResponseEntity<User> findUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"coverImage\" : \"coverImage\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : 0, \"profileImage\" : \"profileImage\", \"email\" : \"email\", \"status\" : 6 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 
     /**
@@ -164,21 +136,9 @@ public interface UsersApi {
         value = "/users",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<User>> getUsersOrGetUserByName(
+    ResponseEntity<List<User>> getUsersOrGetUserByName(
         @Parameter(name = "username", description = "ユーザー名", in = ParameterIn.QUERY) @Valid @RequestParam(value = "username", required = false) String username
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ null, null ]";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 
     /**
@@ -216,23 +176,11 @@ public interface UsersApi {
         produces = { "application/json" },
         consumes = { "multipart/form-data" }
     )
-    default ResponseEntity<User> updateUser(
+    ResponseEntity<User> updateUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) UpdateUserFormData formData,
         @Parameter(name = "profileImage", description = "") @RequestPart(value = "profileImage", required = false) MultipartFile profileImage,
         @Parameter(name = "coverImage", description = "") @RequestPart(value = "coverImage", required = false) MultipartFile coverImage
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"coverImage\" : \"coverImage\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : 0, \"profileImage\" : \"profileImage\", \"email\" : \"email\", \"status\" : 6 }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
+    );
 
 }
