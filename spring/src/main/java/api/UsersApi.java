@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T11:54:27.219531Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T12:34:22.602756Z[Etc/UTC]")
 @Validated
 @Tag(name = "users", description = "the users API")
 public interface UsersApi {
@@ -81,7 +81,7 @@ public interface UsersApi {
      *         or 405(Validation exception) (status code 405)
      */
     @Operation(
-        operationId = "findUser",
+        operationId = "findUserById",
         description = "任意のUserを取得",
         tags = { "User" },
         responses = {
@@ -101,7 +101,7 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    ResponseEntity<User> findUser(
+    ResponseEntity<User> findUserById(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 

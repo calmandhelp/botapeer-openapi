@@ -58,12 +58,12 @@ export class UserApiRequestFactory extends BaseAPIRequestFactory {
      * 任意のUserを取得
      * @param userId ユーザーID
      */
-    public async findUser(userId: string, _options?: Configuration): Promise<RequestContext> {
+    public async findUserById(userId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
-            throw new RequiredError("UserApi", "findUser", "userId");
+            throw new RequiredError("UserApi", "findUserById", "userId");
         }
 
 
@@ -235,10 +235,10 @@ export class UserApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to findUser
+     * @params response Response returned by the server for a request to findUserById
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async findUser(response: ResponseContext): Promise<User > {
+     public async findUserById(response: ResponseContext): Promise<User > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: User = ObjectSerializer.deserialize(

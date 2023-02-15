@@ -31,8 +31,8 @@ export class PromiseUserApi {
      * 任意のUserを取得
      * @param userId ユーザーID
      */
-    public findUser(userId: string, _options?: Configuration): Promise<User> {
-        const result = this.api.findUser(userId, _options);
+    public findUserById(userId: string, _options?: Configuration): Promise<User> {
+        const result = this.api.findUserById(userId, _options);
         return result.toPromise();
     }
 
