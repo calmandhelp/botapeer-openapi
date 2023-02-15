@@ -171,6 +171,7 @@ components:
           type: string
         email:
           type: string
+          format: email
         description:
           type: string
       required:
@@ -184,6 +185,7 @@ components:
           type: string
         email:
           type: string
+          format: email
         status:
           type: integer
         description:
@@ -191,7 +193,10 @@ components:
         profileImage:
           type: string
         coverImage:
-          type: string       
+          type: string
+      required:
+        - name
+        - email 
     UserResponse:
       $ref: '#/components/schemas/User'
     ErrorResponse:
