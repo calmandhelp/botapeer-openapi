@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UpdateUserFormData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T11:23:47.542828Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T11:54:27.219531Z[Etc/UTC]")
 public class UpdateUserFormData {
 
   @JsonProperty("name")
@@ -58,7 +58,7 @@ public class UpdateUserFormData {
    * Get email
    * @return email
   */
-  @NotNull 
+  @NotNull @Email
   @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getEmail() {
     return email;
