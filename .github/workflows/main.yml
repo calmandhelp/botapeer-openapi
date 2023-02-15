@@ -9,12 +9,6 @@ jobs:
         uses: actions/checkout@v3
       - name: typescriptのコード生成
         run: make generate-docker-typescript
-      - name: 生成コードのコミット
-        run: |
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git add .
-            git commit -m "Generated code"
       - name: JDK 11のセットアップ
         uses: actions/setup-java@v3
         with:
@@ -28,6 +22,12 @@ jobs:
         run: cd spring && mvn deploy
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      - name: 生成コードのコミット
+        run: |
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add .
+            git commit -m "Generated code"
       - name: 生成コードのプッシュ
         uses: ad-m/github-push-action@master
         with:
