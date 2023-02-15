@@ -28,7 +28,6 @@ paths:
             application/json:
               schema:
                 type: array
-                format: CollectionFormat
                 items:
                   $ref: '#/components/schemas/User'
         '404':
