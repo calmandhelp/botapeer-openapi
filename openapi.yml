@@ -162,7 +162,34 @@ paths:
             http_status:
               description: HTTPステータス
               schema:
-                type: integer                
+                type: integer
+  '/users/plant_records/{plantRecordId}':
+    get:
+      operationId: findUserByPlantRecordId
+      tags:
+        - User
+      description: 任意のUserをPlantRecordIdから取得
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: 404(User Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     UpdateUserFormData:
