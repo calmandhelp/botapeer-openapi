@@ -21,34 +21,12 @@ import javax.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T09:38:37.608860Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T10:04:51.365962Z[Etc/UTC]")
 public class ErrorResponse {
-
-  @JsonProperty("status")
-  private Integer status;
 
   @JsonProperty("errors")
   @Valid
   private List<ErrorInner> errors = null;
-
-  public ErrorResponse status(Integer status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-  */
-  
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Integer getStatus() {
-    return status;
-  }
-
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
 
   public ErrorResponse errors(List<ErrorInner> errors) {
     this.errors = errors;
@@ -86,20 +64,18 @@ public class ErrorResponse {
       return false;
     }
     ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.status, errorResponse.status) &&
-        Objects.equals(this.errors, errorResponse.errors);
+    return Objects.equals(this.errors, errorResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errors);
+    return Objects.hash(errors);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
