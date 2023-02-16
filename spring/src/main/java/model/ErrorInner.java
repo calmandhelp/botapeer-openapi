@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("Error_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T10:04:51.365962Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T13:04:48.950042Z[Etc/UTC]")
 public class ErrorInner {
 
   @JsonProperty("code")
