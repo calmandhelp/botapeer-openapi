@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T07:46:58.187693Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T09:38:37.608860Z[Etc/UTC]")
 public class ErrorResponse {
 
   @JsonProperty("status")
