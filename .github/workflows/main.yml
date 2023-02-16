@@ -8,7 +8,7 @@ jobs:
       - name: リポジトリのチェックアウト
         uses: actions/checkout@v3
       - name: typescriptのコード生成
-        run: make generate-docker-typescript
+        run: make generate-docker-typescript-axios
       - name: JDK 11のセットアップ
         uses: actions/setup-java@v3
         with:
