@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * User
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-15T13:01:18.293465Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T07:05:52.853189Z[Etc/UTC]")
 public class User {
 
   @JsonProperty("id")
@@ -70,7 +70,7 @@ public class User {
    * Get name
    * @return name
   */
-  @NotNull 
+  @NotNull @Size(min = 1, max = 30) 
   @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getName() {
     return name;
@@ -89,7 +89,7 @@ public class User {
    * Get email
    * @return email
   */
-  @NotNull @Email
+  @NotNull @Size(min = 1) @Email
   @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getEmail() {
     return email;
