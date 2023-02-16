@@ -186,12 +186,13 @@ components:
           type: integer
         name:
           type: string
+          pattern: '^\S.*\S$'
           minLength: 1
           maxLength: 30
         email:
           type: string
           format: email
-          minLength: 1
+          pattern: '^\S.*\S$'
         status:
           type: integer
         description:
