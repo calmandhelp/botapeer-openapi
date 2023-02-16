@@ -171,10 +171,12 @@ components:
           type: string
           minLength: 1
           maxLength: 30
+          pattern: '^\S.*\S$'
         email:
           type: string
           format: email
           minLength: 1
+          pattern: '^\S.*\S$'
         description:
           type: string
       required:
@@ -186,9 +188,9 @@ components:
           type: integer
         name:
           type: string
-          pattern: '^\S.*\S$'
           minLength: 1
           maxLength: 30
+          pattern: '^\S.*\S$'
         email:
           type: string
           format: email
