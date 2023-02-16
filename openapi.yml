@@ -183,9 +183,12 @@ components:
           type: integer
         name:
           type: string
+          minLength: 1
+          maxLength: 30
         email:
           type: string
           format: email
+          minLength: 1
         status:
           type: integer
         description:
