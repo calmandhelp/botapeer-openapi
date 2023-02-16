@@ -170,11 +170,12 @@ components:
         name:
           type: string
           minLength: 1
-          maxLength: 30
+          maxLength: 15
         email:
           type: string
           format: email
           minLength: 1
+          maxLength: 255
         description:
           type: string
       required:
@@ -187,7 +188,7 @@ components:
         name:
           type: string
           minLength: 1
-          maxLength: 30
+          maxLength: 15
         email:
           type: string
           format: email
