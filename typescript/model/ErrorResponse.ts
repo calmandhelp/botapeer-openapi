@@ -14,18 +14,11 @@ import { ErrorInner } from '../model/ErrorInner';
 import { HttpFile } from '../http/http';
 
 export class ErrorResponse {
-    'status'?: number;
     'errors'?: Array<ErrorInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "number",
-            "format": ""
-        },
         {
             "name": "errors",
             "baseName": "errors",
