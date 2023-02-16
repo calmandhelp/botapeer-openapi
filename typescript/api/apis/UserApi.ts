@@ -86,6 +86,37 @@ export class UserApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * 任意のUserをPlantRecordIdから取得
+     * @param plantRecordId 生育記録ID
+     */
+    public async findUserByPlantRecordId(plantRecordId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'plantRecordId' is not null or undefined
+        if (plantRecordId === null || plantRecordId === undefined) {
+            throw new RequiredError("UserApi", "findUserByPlantRecordId", "plantRecordId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/users/plant_records/{plantRecordId}'
+            .replace('{' + 'plantRecordId' + '}', encodeURIComponent(String(plantRecordId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * User一覧もしくは名前からユーザーを取得
      * @param username ユーザー名
      */
@@ -260,6 +291,42 @@ export class UserApiResponseProcessor {
                 "ErrorResponse", ""
             ) as ErrorResponse;
             throw new ApiException<ErrorResponse>(response.httpStatusCode, "405(Validation exception)", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: User = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "User", ""
+            ) as User;
+            return body;
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to findUserByPlantRecordId
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async findUserByPlantRecordId(response: ResponseContext): Promise<User > {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: User = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "User", ""
+            ) as User;
+            return body;
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: ErrorResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ErrorResponse", ""
+            ) as ErrorResponse;
+            throw new ApiException<ErrorResponse>(response.httpStatusCode, "404(User Not Found)", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

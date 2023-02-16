@@ -37,6 +37,15 @@ export class PromiseUserApi {
     }
 
     /**
+     * 任意のUserをPlantRecordIdから取得
+     * @param plantRecordId 生育記録ID
+     */
+    public findUserByPlantRecordId(plantRecordId: string, _options?: Configuration): Promise<User> {
+        const result = this.api.findUserByPlantRecordId(plantRecordId, _options);
+        return result.toPromise();
+    }
+
+    /**
      * User一覧もしくは名前からユーザーを取得
      * @param username ユーザー名
      */

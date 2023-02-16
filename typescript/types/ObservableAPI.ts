@@ -69,6 +69,29 @@ export class ObservableUserApi {
     }
 
     /**
+     * 任意のUserをPlantRecordIdから取得
+     * @param plantRecordId 生育記録ID
+     */
+    public findUserByPlantRecordId(plantRecordId: string, _options?: Configuration): Observable<User> {
+        const requestContextPromise = this.requestFactory.findUserByPlantRecordId(plantRecordId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findUserByPlantRecordId(rsp)));
+            }));
+    }
+
+    /**
      * User一覧もしくは名前からユーザーを取得
      * @param username ユーザー名
      */

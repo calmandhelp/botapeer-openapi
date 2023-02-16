@@ -26,6 +26,15 @@ export interface UserApiFindUserByIdRequest {
     userId: string
 }
 
+export interface UserApiFindUserByPlantRecordIdRequest {
+    /**
+     * 生育記録ID
+     * @type string
+     * @memberof UserApifindUserByPlantRecordId
+     */
+    plantRecordId: string
+}
+
 export interface UserApiGetUsersOrGetUserByNameRequest {
     /**
      * ユーザー名
@@ -83,6 +92,14 @@ export class ObjectUserApi {
      */
     public findUserById(param: UserApiFindUserByIdRequest, options?: Configuration): Promise<User> {
         return this.api.findUserById(param.userId,  options).toPromise();
+    }
+
+    /**
+     * 任意のUserをPlantRecordIdから取得
+     * @param param the request object
+     */
+    public findUserByPlantRecordId(param: UserApiFindUserByPlantRecordIdRequest, options?: Configuration): Promise<User> {
+        return this.api.findUserByPlantRecordId(param.plantRecordId,  options).toPromise();
     }
 
     /**
