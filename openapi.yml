@@ -204,8 +204,6 @@ components:
         - email 
     ErrorResponse:
       properties:
-        status:
-          type: integer
         errors:
           $ref: '#/components/schemas/Error'
     Error:
