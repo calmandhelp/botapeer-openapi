@@ -59,7 +59,7 @@ paths:
           description: ユーザーID
           required: true
           schema:
-            type: integer
+            type: string
             example: 1
       responses:
         '200':
@@ -98,7 +98,7 @@ paths:
           description: ユーザーID
           required: true
           schema:
-            type: integer
+            type: string
             example: 1
       requestBody:
         required: true
@@ -147,7 +147,7 @@ paths:
           description: ユーザーID
           required: true
           schema:
-            type: integer
+            type: string
             example: 1
       responses:
         '200':
@@ -175,7 +175,7 @@ paths:
           description: 生育記録ID
           required: true
           schema:
-            type: integer
+            type: string
             example: 1
       responses:
         '200':
