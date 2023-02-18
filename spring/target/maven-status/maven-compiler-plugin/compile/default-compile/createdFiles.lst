@@ -1,3 +1,6 @@
+api/AuthApi.class
+model/JwtAuthenticationResponse.class
+model/SignInRequest.class
 api/ApiUtil.class
 model/UpdateUserRequest.class
 api/UsersApi.class

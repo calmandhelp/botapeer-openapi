@@ -14,6 +14,23 @@
 
 
 
-export * from './api/auth-api';
-export * from './api/user-api';
+/**
+ * 
+ * @export
+ * @interface SignInRequest
+ */
+export interface SignInRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SignInRequest
+     */
+    'usernameOrEmail': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SignInRequest
+     */
+    'password': string;
+}
 
