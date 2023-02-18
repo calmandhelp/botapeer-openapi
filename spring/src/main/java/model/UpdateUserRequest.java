@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("updateUser_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T13:04:48.950042Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-17T16:08:21.435170Z[Etc/UTC]")
 public class UpdateUserRequest {
 
   @JsonProperty("formData")

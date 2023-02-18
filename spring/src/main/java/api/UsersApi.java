@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-16T13:04:48.950042Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-17T16:08:21.435170Z[Etc/UTC]")
 @Validated
 @Tag(name = "users", description = "the users API")
 public interface UsersApi {
@@ -103,6 +103,37 @@ public interface UsersApi {
     )
     ResponseEntity<User> findUserById(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
+    );
+
+
+    /**
+     * GET /users/plant_records/{plantRecordId}
+     * 任意のUserをPlantRecordIdから取得
+     *
+     * @param plantRecordId 生育記録ID (required)
+     * @return ok (status code 200)
+     *         or 404(User Not Found) (status code 404)
+     */
+    @Operation(
+        operationId = "findUserByPlantRecordId",
+        description = "任意のUserをPlantRecordIdから取得",
+        tags = { "User" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/users/plant_records/{plantRecordId}",
+        produces = { "application/json" }
+    )
+    ResponseEntity<User> findUserByPlantRecordId(
+        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
     );
 
 
