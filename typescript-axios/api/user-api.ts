@@ -35,11 +35,11 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 任意のUserを削除
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteUser: async (userId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteUser', 'userId', userId)
             const localVarPath = `/users/{userId}`
@@ -72,11 +72,11 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 任意のUserを取得
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserById: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        findUserById: async (userId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('findUserById', 'userId', userId)
             const localVarPath = `/users/{userId}`
@@ -105,11 +105,11 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 任意のUserをPlantRecordIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * @param {number} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserByPlantRecordId: async (plantRecordId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        findUserByPlantRecordId: async (plantRecordId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'plantRecordId' is not null or undefined
             assertParamExists('findUserByPlantRecordId', 'plantRecordId', plantRecordId)
             const localVarPath = `/users/plant_records/{plantRecordId}`
@@ -172,14 +172,14 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 任意のUserを更新
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
          * @param {File} [coverImage] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser: async (userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUser: async (userId: number, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('updateUser', 'userId', userId)
             const localVarPath = `/users/{userId}`
@@ -238,31 +238,31 @@ export const UserApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 任意のUserを削除
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async deleteUser(userId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 任意のUserを取得
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findUserById(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async findUserById(userId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findUserById(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 任意のUserをPlantRecordIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * @param {number} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findUserByPlantRecordId(plantRecordId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async findUserByPlantRecordId(plantRecordId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findUserByPlantRecordId(plantRecordId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -278,14 +278,14 @@ export const UserApiFp = function(configuration?: Configuration) {
         },
         /**
          * 任意のUserを更新
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
          * @param {File} [coverImage] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async updateUser(userId: number, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(userId, formData, profileImage, coverImage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -301,29 +301,29 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 任意のUserを削除
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser(userId: string, options?: any): AxiosPromise<User> {
+        deleteUser(userId: number, options?: any): AxiosPromise<User> {
             return localVarFp.deleteUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 任意のUserを取得
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserById(userId: string, options?: any): AxiosPromise<User> {
+        findUserById(userId: number, options?: any): AxiosPromise<User> {
             return localVarFp.findUserById(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 任意のUserをPlantRecordIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * @param {number} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserByPlantRecordId(plantRecordId: string, options?: any): AxiosPromise<User> {
+        findUserByPlantRecordId(plantRecordId: number, options?: any): AxiosPromise<User> {
             return localVarFp.findUserByPlantRecordId(plantRecordId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -337,14 +337,14 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 任意のUserを更新
-         * @param {string} userId ユーザーID
+         * @param {number} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
          * @param {File} [coverImage] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: any): AxiosPromise<User> {
+        updateUser(userId: number, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: any): AxiosPromise<User> {
             return localVarFp.updateUser(userId, formData, profileImage, coverImage, options).then((request) => request(axios, basePath));
         },
     };
@@ -359,34 +359,34 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
 export class UserApi extends BaseAPI {
     /**
      * 任意のUserを削除
-     * @param {string} userId ユーザーID
+     * @param {number} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public deleteUser(userId: string, options?: AxiosRequestConfig) {
+    public deleteUser(userId: number, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).deleteUser(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 任意のUserを取得
-     * @param {string} userId ユーザーID
+     * @param {number} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public findUserById(userId: string, options?: AxiosRequestConfig) {
+    public findUserById(userId: number, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).findUserById(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 任意のUserをPlantRecordIdから取得
-     * @param {string} plantRecordId 生育記録ID
+     * @param {number} plantRecordId 生育記録ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public findUserByPlantRecordId(plantRecordId: string, options?: AxiosRequestConfig) {
+    public findUserByPlantRecordId(plantRecordId: number, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).findUserByPlantRecordId(plantRecordId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -403,7 +403,7 @@ export class UserApi extends BaseAPI {
 
     /**
      * 任意のUserを更新
-     * @param {string} userId ユーザーID
+     * @param {number} userId ユーザーID
      * @param {UpdateUserFormData} [formData] 
      * @param {File} [profileImage] 
      * @param {File} [coverImage] 
@@ -411,7 +411,7 @@ export class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig) {
+    public updateUser(userId: number, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).updateUser(userId, formData, profileImage, coverImage, options).then((request) => request(this.axios, this.basePath));
     }
 }
