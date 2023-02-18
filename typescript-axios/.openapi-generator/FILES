@@ -13,4 +13,6 @@ model/error-response.ts
 model/index.ts
 model/jwt-authentication-response.ts
 model/sign-in-request.ts
+model/update-user-form-data.ts
+model/update-user-request.ts
 model/user.ts
