@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UpdateUserFormData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T10:11:31.928751Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T10:25:41.208092Z[Etc/UTC]")
 public class UpdateUserFormData {
 
   @JsonProperty("name")
