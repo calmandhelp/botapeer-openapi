@@ -190,6 +190,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  '/auth/signin':
+    post:
+      operationId: signin
+      tags:
+        - Auth
+      description: サインイン
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/SignInRequest'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtAuthenticationResponse'
+        '404':
+          description: 404(User Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
 components:
   schemas:
     UpdateUserFormData:
@@ -229,7 +254,25 @@ components:
           type: string
       required:
         - name
-        - email 
+        - email
+    SignInRequest:
+      properties:
+        usernameOrEmail:
+          type: string
+        password:
+          type: string
+      required:
+        - usernameOrEmail
+        - password                 
+    JwtAuthenticationResponse:
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+      required:
+        - accessToken
+        - tokenType         
     ErrorResponse:
       properties:
         errors:
