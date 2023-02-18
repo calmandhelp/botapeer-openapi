@@ -1,6 +1,7 @@
 .gitignore
 .npmignore
 api.ts
+api/auth-api.ts
 api/user-api.ts
 base.ts
 common.ts
@@ -10,4 +11,6 @@ index.ts
 model/error-inner.ts
 model/error-response.ts
 model/index.ts
+model/jwt-authentication-response.ts
+model/sign-in-request.ts
 model/user.ts
