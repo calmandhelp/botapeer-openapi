@@ -18,3 +18,4 @@ generate-docker-typescript-axios: $(openapi) $(config)
     -g typescript-axios \
     -o /local/typescript-axios \
 		-c /local/$(config)
+		--global-property skipFormModel=false \
