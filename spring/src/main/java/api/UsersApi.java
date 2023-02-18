@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T07:53:47.804903Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T08:30:09.387579Z[Etc/UTC]")
 @Validated
 @Tag(name = "users", description = "the users API")
 public interface UsersApi {
@@ -67,7 +67,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     ResponseEntity<User> deleteUser(
-        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId
+        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
 
@@ -102,7 +102,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     ResponseEntity<User> findUserById(
-        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId
+        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
 
@@ -133,7 +133,7 @@ public interface UsersApi {
         produces = { "application/json" }
     )
     ResponseEntity<User> findUserByPlantRecordId(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") Integer plantRecordId
+        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
     );
 
 
@@ -208,7 +208,7 @@ public interface UsersApi {
         consumes = { "multipart/form-data" }
     )
     ResponseEntity<User> updateUser(
-        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId,
+        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) UpdateUserFormData formData,
         @Parameter(name = "profileImage", description = "") @RequestPart(value = "profileImage", required = false) MultipartFile profileImage,
         @Parameter(name = "coverImage", description = "") @RequestPart(value = "coverImage", required = false) MultipartFile coverImage
