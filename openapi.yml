@@ -393,7 +393,7 @@ paths:
             schema:
               properties:
                 formData:
-                  $ref: '#/components/schemas/CreatePostRequest'
+                  $ref: '#/components/schemas/CreatePostFormData'
                 imageUrl:
                   type: string
                   format: binary
@@ -576,7 +576,7 @@ components:
         - name
         - email
         - password
-    CreatePostRequest:
+    CreatePostFormData:
       properties:
         title:
           type: string
