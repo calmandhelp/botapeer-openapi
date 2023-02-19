@@ -232,7 +232,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'                
+                $ref: '#/components/schemas/ErrorResponse'
   '/auth/signup':
     post:
       operationId: createUser
@@ -251,7 +251,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JwtAuthenticationResponse'
+                $ref: '#/components/schemas/UserResponse'
         '405':
           description: 405(Validation exception)
           content:
@@ -296,6 +296,37 @@ paths:
               description: HTTPステータス
               schema:
                 type: integer
+  '/plant_records':
+    post:
+      operationId: createPlantRecord
+      tags:
+        - PlantRecord
+      description: 生育記録作成
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/CreatePlantRecordRequest'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtAuthenticationResponse'
+        '404':
+          description: 404(User Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
 components:
   schemas:
     UpdateUserFormData:
@@ -420,6 +451,19 @@ components:
           type: string
           minLength: 8
           maxLength: 20
+      required:
+        - name
+        - email
+        - password
+    CreatePlantRecordRequest:
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 40
+        placeId:
+          type: integer
+          format: int64
       required:
         - name
         - email
