@@ -15,54 +15,54 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * PlaceResponse
+ * CreatePostFormData
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:50:07.935145Z[Etc/UTC]")
-public class PlaceResponse {
+public class CreatePostFormData {
 
-  @JsonProperty("id")
-  private Long id;
+  @JsonProperty("title")
+  private String title;
 
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("article")
+  private String article;
 
-  public PlaceResponse id(Long id) {
-    this.id = id;
+  public CreatePostFormData title(String title) {
+    this.title = title;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get title
+   * @return title
   */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Long getId() {
-    return id;
+  @NotNull 
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
+  public String getTitle() {
+    return title;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public PlaceResponse name(String name) {
-    this.name = name;
+  public CreatePostFormData article(String article) {
+    this.article = article;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get article
+   * @return article
   */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public String getName() {
-    return name;
+  @NotNull 
+  @Schema(name = "article", requiredMode = Schema.RequiredMode.REQUIRED)
+  public String getArticle() {
+    return article;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setArticle(String article) {
+    this.article = article;
   }
 
   @Override
@@ -73,22 +73,22 @@ public class PlaceResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlaceResponse placeResponse = (PlaceResponse) o;
-    return Objects.equals(this.id, placeResponse.id) &&
-        Objects.equals(this.name, placeResponse.name);
+    CreatePostFormData createPostFormData = (CreatePostFormData) o;
+    return Objects.equals(this.title, createPostFormData.title) &&
+        Objects.equals(this.article, createPostFormData.article);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(title, article);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PlaceResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class CreatePostFormData {\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    article: ").append(toIndentedString(article)).append("\n");
     sb.append("}");
     return sb.toString();
   }

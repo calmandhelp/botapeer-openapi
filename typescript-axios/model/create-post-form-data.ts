@@ -13,27 +13,24 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { CreatePostFormData } from './create-post-form-data';
 
 /**
  * 
  * @export
- * @interface CreatePostRequest
+ * @interface CreatePostFormData
  */
-export interface CreatePostRequest {
+export interface CreatePostFormData {
     /**
      * 
-     * @type {CreatePostFormData}
-     * @memberof CreatePostRequest
+     * @type {string}
+     * @memberof CreatePostFormData
      */
-    'formData'?: CreatePostFormData;
+    'title': string;
     /**
      * 
-     * @type {File}
-     * @memberof CreatePostRequest
+     * @type {string}
+     * @memberof CreatePostFormData
      */
-    'imageUrl': File;
+    'article': string;
 }
 

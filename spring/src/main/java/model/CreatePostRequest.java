@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import model.CreatePostFormData;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,16 +21,16 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("createPost_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:41:44.166613Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:50:07.935145Z[Etc/UTC]")
 public class CreatePostRequest {
 
   @JsonProperty("formData")
-  private CreatePostRequest formData;
+  private CreatePostFormData formData;
 
   @JsonProperty("imageUrl")
   private org.springframework.core.io.Resource imageUrl;
 
-  public CreatePostRequest formData(CreatePostRequest formData) {
+  public CreatePostRequest formData(CreatePostFormData formData) {
     this.formData = formData;
     return this;
   }
@@ -40,11 +41,11 @@ public class CreatePostRequest {
   */
   @Valid 
   @Schema(name = "formData", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public CreatePostRequest getFormData() {
+  public CreatePostFormData getFormData() {
     return formData;
   }
 
-  public void setFormData(CreatePostRequest formData) {
+  public void setFormData(CreatePostFormData formData) {
     this.formData = formData;
   }
 

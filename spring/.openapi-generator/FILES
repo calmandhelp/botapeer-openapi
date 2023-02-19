@@ -6,6 +6,7 @@ src/main/java/api/PlacesApi.java
 src/main/java/api/PlantRecordsApi.java
 src/main/java/api/UsersApi.java
 src/main/java/model/CreatePlantRecordRequest.java
+src/main/java/model/CreatePostFormData.java
 src/main/java/model/CreatePostRequest.java
 src/main/java/model/CreateUserRequest.java
 src/main/java/model/ErrorInner.java

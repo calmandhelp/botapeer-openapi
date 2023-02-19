@@ -7,6 +7,7 @@ model/UpdateUserFormData.class
 model/PostResponse.class
 model/CreateUserRequest.class
 model/ErrorInner.class
+model/CreatePostFormData.class
 model/JwtAuthenticationResponse.class
 model/CreatePostRequest.class
 model/UserResponse.class
