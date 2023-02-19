@@ -316,7 +316,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlantRecordResponse'
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlantRecordResponse'
         '404':
           description: 404(PlantRecord Not Found)
           content:
