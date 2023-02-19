@@ -368,6 +368,7 @@ components:
       properties:
           id:
             type: integer
+            format: int64
           plantRecordId:
             type: integer
           title:
