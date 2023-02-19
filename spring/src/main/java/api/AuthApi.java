@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:14:03.452223Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:41:44.166613Z[Etc/UTC]")
 @Validated
 @Tag(name = "Auth", description = "the Auth API")
 public interface AuthApi {
