@@ -22,10 +22,10 @@
 export interface CreatePostRequest {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof CreatePostRequest
      */
-    'title'?: number;
+    'title'?: string;
     /**
      * 
      * @type {string}

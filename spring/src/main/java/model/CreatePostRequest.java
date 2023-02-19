@@ -18,11 +18,11 @@ import javax.annotation.Generated;
  * CreatePostRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:39:50.876326Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:57:22.758459Z[Etc/UTC]")
 public class CreatePostRequest {
 
   @JsonProperty("title")
-  private Long title;
+  private String title;
 
   @JsonProperty("article")
   private String article;
@@ -30,7 +30,7 @@ public class CreatePostRequest {
   @JsonProperty("imageUrl")
   private String imageUrl;
 
-  public CreatePostRequest title(Long title) {
+  public CreatePostRequest title(String title) {
     this.title = title;
     return this;
   }
@@ -41,11 +41,11 @@ public class CreatePostRequest {
   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Long getTitle() {
+  public String getTitle() {
     return title;
   }
 
-  public void setTitle(Long title) {
+  public void setTitle(String title) {
     this.title = title;
   }
 
