@@ -29,7 +29,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/User'
+                  $ref: '#/components/schemas/UserResponse'
         '404':
           description: 404(User Not Found)
           content:
@@ -67,7 +67,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserResponse'
         '404':
           description: 404(User Not Found)
           content:
@@ -120,7 +120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserResponse'
         '401':
           description: 401(Unauthorized)
         '405':
@@ -155,7 +155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserResponse'
         '401':
           description: 401(Unauthorized)
           headers:
@@ -189,7 +189,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserResponse'
         '404':
           description: 404(User Not Found)
           content:
@@ -257,7 +257,45 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'                
+                $ref: '#/components/schemas/ErrorResponse'
+  '/plant_records/{plantRecordId}':
+    get:
+      operationId: getPlantRecordById
+      tags:
+        - PlantRecord
+      description: 任意の植物記録をplantRecordIdから取得
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 植物記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlantRecordResponse'
+        '404':
+          description: 404(PlantRecord Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer
 components:
   schemas:
     UpdateUserFormData:
@@ -276,7 +314,7 @@ components:
       required:
         - name
         - email
-    User:
+    UserResponse:
       properties:
         id:
           type: integer
@@ -295,9 +333,57 @@ components:
           type: string
         coverImage:
           type: string
-      required:
-        - name
-        - email
+    PlantRecordResponse:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+          minLength: 1
+          maxLength: 40
+        alive:
+          type: integer
+        endDate:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        place:
+            $ref: '#/components/schemas/PlaceResponse'
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PostResponse'
+    PlaceResponse:
+      properties:
+          id:
+            type: integer
+          name:
+            type: string
+    PostResponse:
+      properties:
+          id:
+            type: integer
+          plantRecordId:
+            type: integer
+          title:
+            type: string
+          article:
+            type: string
+          image_url:
+            type: string
+          status:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
     SignInRequest:
       properties:
         usernameOrEmail:
@@ -330,7 +416,7 @@ components:
         password:
           type: string
           minLength: 8
-          maxLength: 30
+          maxLength: 20
       required:
         - name
         - email
