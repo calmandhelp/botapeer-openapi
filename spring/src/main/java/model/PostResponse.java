@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  * PostResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T09:10:36.965323Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:39:50.876326Z[Etc/UTC]")
 public class PostResponse {
 
   @JsonProperty("id")
   private Long id;
 
   @JsonProperty("plantRecordId")
-  private Integer plantRecordId;
+  private Long plantRecordId;
 
   @JsonProperty("title")
   private String title;
@@ -35,17 +35,17 @@ public class PostResponse {
   @JsonProperty("article")
   private String article;
 
-  @JsonProperty("image_url")
+  @JsonProperty("imageUrl")
   private String imageUrl;
 
   @JsonProperty("status")
   private Integer status;
 
-  @JsonProperty("created_at")
+  @JsonProperty("createdAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime createdAt;
 
-  @JsonProperty("updated_at")
+  @JsonProperty("updatedAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime updatedAt;
 
@@ -68,7 +68,7 @@ public class PostResponse {
     this.id = id;
   }
 
-  public PostResponse plantRecordId(Integer plantRecordId) {
+  public PostResponse plantRecordId(Long plantRecordId) {
     this.plantRecordId = plantRecordId;
     return this;
   }
@@ -79,11 +79,11 @@ public class PostResponse {
   */
   
   @Schema(name = "plantRecordId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Integer getPlantRecordId() {
+  public Long getPlantRecordId() {
     return plantRecordId;
   }
 
-  public void setPlantRecordId(Integer plantRecordId) {
+  public void setPlantRecordId(Long plantRecordId) {
     this.plantRecordId = plantRecordId;
   }
 
@@ -135,7 +135,7 @@ public class PostResponse {
    * @return imageUrl
   */
   
-  @Schema(name = "image_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   public String getImageUrl() {
     return imageUrl;
   }
@@ -173,7 +173,7 @@ public class PostResponse {
    * @return createdAt
   */
   @Valid 
-  @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -192,7 +192,7 @@ public class PostResponse {
    * @return updatedAt
   */
   @Valid 
-  @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "updatedAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }

@@ -24,9 +24,13 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { CreatePlantRecordRequest } from '../model';
 // @ts-ignore
+import { CreatePostRequest } from '../model';
+// @ts-ignore
 import { ErrorResponse } from '../model';
 // @ts-ignore
 import { PlantRecordResponse } from '../model';
+// @ts-ignore
+import { PostResponse } from '../model';
 /**
  * PlantRecordApi - axios parameter creator
  * @export
@@ -66,6 +70,49 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(createPlantRecordRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 投稿作成
+         * @param {string} plantRecordId 生育記録ID
+         * @param {CreatePostRequest} createPostRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPost: async (plantRecordId: string, createPostRequest: CreatePostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'plantRecordId' is not null or undefined
+            assertParamExists('createPost', 'plantRecordId', plantRecordId)
+            // verify required parameter 'createPostRequest' is not null or undefined
+            assertParamExists('createPost', 'createPostRequest', createPostRequest)
+            const localVarPath = `/plant_records/{plantRecordId}/posts`
+                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createPostRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -159,6 +206,17 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * 投稿作成
+         * @param {string} plantRecordId 生育記録ID
+         * @param {CreatePostRequest} createPostRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createPost(plantRecordId: string, createPostRequest: CreatePostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createPost(plantRecordId, createPostRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 任意の生育記録をplantRecordIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
@@ -198,6 +256,16 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
             return localVarFp.createPlantRecord(createPlantRecordRequest, options).then((request) => request(axios, basePath));
         },
         /**
+         * 投稿作成
+         * @param {string} plantRecordId 生育記録ID
+         * @param {CreatePostRequest} createPostRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPost(plantRecordId: string, createPostRequest: CreatePostRequest, options?: any): AxiosPromise<PostResponse> {
+            return localVarFp.createPost(plantRecordId, createPostRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 任意の生育記録をplantRecordIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
@@ -234,6 +302,18 @@ export class PlantRecordApi extends BaseAPI {
      */
     public createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig) {
         return PlantRecordApiFp(this.configuration).createPlantRecord(createPlantRecordRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 投稿作成
+     * @param {string} plantRecordId 生育記録ID
+     * @param {CreatePostRequest} createPostRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlantRecordApi
+     */
+    public createPost(plantRecordId: string, createPostRequest: CreatePostRequest, options?: AxiosRequestConfig) {
+        return PlantRecordApiFp(this.configuration).createPost(plantRecordId, createPostRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -15,19 +15,22 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * CreatePlantRecordRequest
+ * CreatePostRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:39:50.876326Z[Etc/UTC]")
-public class CreatePlantRecordRequest {
+public class CreatePostRequest {
 
   @JsonProperty("title")
-  private String title;
+  private Long title;
 
-  @JsonProperty("placeId")
-  private Long placeId;
+  @JsonProperty("article")
+  private String article;
 
-  public CreatePlantRecordRequest title(String title) {
+  @JsonProperty("imageUrl")
+  private String imageUrl;
+
+  public CreatePostRequest title(Long title) {
     this.title = title;
     return this;
   }
@@ -36,33 +39,52 @@ public class CreatePlantRecordRequest {
    * Get title
    * @return title
   */
-  @Size(min = 1, max = 40) 
+  
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public String getTitle() {
+  public Long getTitle() {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(Long title) {
     this.title = title;
   }
 
-  public CreatePlantRecordRequest placeId(Long placeId) {
-    this.placeId = placeId;
+  public CreatePostRequest article(String article) {
+    this.article = article;
     return this;
   }
 
   /**
-   * Get placeId
-   * @return placeId
+   * Get article
+   * @return article
   */
   
-  @Schema(name = "placeId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Long getPlaceId() {
-    return placeId;
+  @Schema(name = "article", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public String getArticle() {
+    return article;
   }
 
-  public void setPlaceId(Long placeId) {
-    this.placeId = placeId;
+  public void setArticle(String article) {
+    this.article = article;
+  }
+
+  public CreatePostRequest imageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+  /**
+   * Get imageUrl
+   * @return imageUrl
+  */
+  
+  @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 
   @Override
@@ -73,22 +95,24 @@ public class CreatePlantRecordRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreatePlantRecordRequest createPlantRecordRequest = (CreatePlantRecordRequest) o;
-    return Objects.equals(this.title, createPlantRecordRequest.title) &&
-        Objects.equals(this.placeId, createPlantRecordRequest.placeId);
+    CreatePostRequest createPostRequest = (CreatePostRequest) o;
+    return Objects.equals(this.title, createPostRequest.title) &&
+        Objects.equals(this.article, createPostRequest.article) &&
+        Objects.equals(this.imageUrl, createPostRequest.imageUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, placeId);
+    return Objects.hash(title, article, imageUrl);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreatePlantRecordRequest {\n");
+    sb.append("class CreatePostRequest {\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    placeId: ").append(toIndentedString(placeId)).append("\n");
+    sb.append("    article: ").append(toIndentedString(article)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

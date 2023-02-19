@@ -49,7 +49,7 @@ export interface PostResponse {
      * @type {string}
      * @memberof PostResponse
      */
-    'image_url'?: string;
+    'imageUrl'?: string;
     /**
      * 
      * @type {number}
@@ -61,12 +61,12 @@ export interface PostResponse {
      * @type {string}
      * @memberof PostResponse
      */
-    'created_at'?: string;
+    'createdAt'?: string;
     /**
      * 
      * @type {string}
      * @memberof PostResponse
      */
-    'updated_at'?: string;
+    'updatedAt'?: string;
 }
 

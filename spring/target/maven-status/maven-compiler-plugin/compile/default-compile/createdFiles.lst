@@ -8,6 +8,7 @@ model/PostResponse.class
 model/CreateUserRequest.class
 model/ErrorInner.class
 model/JwtAuthenticationResponse.class
+model/CreatePostRequest.class
 model/UserResponse.class
 model/SignInRequest.class
 api/PlantRecordsApi.class
