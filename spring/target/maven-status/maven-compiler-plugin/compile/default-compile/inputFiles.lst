@@ -6,5 +6,6 @@
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/ErrorInner.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/ErrorResponse.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/UpdateUserFormData.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/CreateUserRequest.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/api/UsersApi.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/User.java

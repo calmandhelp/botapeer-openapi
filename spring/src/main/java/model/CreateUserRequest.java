@@ -15,11 +15,11 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * UpdateUserFormData
+ * CreateUserRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T01:33:16.026807Z[Etc/UTC]")
-public class UpdateUserFormData {
+public class CreateUserRequest {
 
   @JsonProperty("name")
   private String name;
@@ -27,10 +27,10 @@ public class UpdateUserFormData {
   @JsonProperty("email")
   private String email;
 
-  @JsonProperty("description")
-  private String description;
+  @JsonProperty("password")
+  private String password;
 
-  public UpdateUserFormData name(String name) {
+  public CreateUserRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -49,7 +49,7 @@ public class UpdateUserFormData {
     this.name = name;
   }
 
-  public UpdateUserFormData email(String email) {
+  public CreateUserRequest email(String email) {
     this.email = email;
     return this;
   }
@@ -68,23 +68,23 @@ public class UpdateUserFormData {
     this.email = email;
   }
 
-  public UpdateUserFormData description(String description) {
-    this.description = description;
+  public CreateUserRequest password(String password) {
+    this.password = password;
     return this;
   }
 
   /**
-   * Get description
-   * @return description
+   * Get password
+   * @return password
   */
-  
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public String getDescription() {
-    return description;
+  @NotNull @Size(min = 8, max = 30) 
+  @Schema(name = "password", requiredMode = Schema.RequiredMode.REQUIRED)
+  public String getPassword() {
+    return password;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   @Override
@@ -95,24 +95,24 @@ public class UpdateUserFormData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateUserFormData updateUserFormData = (UpdateUserFormData) o;
-    return Objects.equals(this.name, updateUserFormData.name) &&
-        Objects.equals(this.email, updateUserFormData.email) &&
-        Objects.equals(this.description, updateUserFormData.description);
+    CreateUserRequest createUserRequest = (CreateUserRequest) o;
+    return Objects.equals(this.name, createUserRequest.name) &&
+        Objects.equals(this.email, createUserRequest.email) &&
+        Objects.equals(this.password, createUserRequest.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, email, description);
+    return Objects.hash(name, email, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateUserFormData {\n");
+    sb.append("class CreateUserRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

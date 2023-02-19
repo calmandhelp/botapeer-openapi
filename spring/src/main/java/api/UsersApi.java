@@ -34,9 +34,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T10:32:44.374167Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T01:33:16.026807Z[Etc/UTC]")
 @Validated
-@Tag(name = "users", description = "the users API")
+@Tag(name = "User", description = "the User API")
 public interface UsersApi {
 
     /**
@@ -46,6 +46,7 @@ public interface UsersApi {
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
      *         or 401(Unauthorized) (status code 401)
+     *         or 405(Validation exception) (status code 405)
      */
     @Operation(
         operationId = "deleteUser",
@@ -55,7 +56,10 @@ public interface UsersApi {
             @ApiResponse(responseCode = "200", description = "ok", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
             }),
-            @ApiResponse(responseCode = "401", description = "401(Unauthorized)")
+            @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
         },
         security = {
             @SecurityRequirement(name = "bearerAuth")
@@ -113,6 +117,7 @@ public interface UsersApi {
      * @param plantRecordId 生育記録ID (required)
      * @return ok (status code 200)
      *         or 404(User Not Found) (status code 404)
+     *         or 405(Validation exception) (status code 405)
      */
     @Operation(
         operationId = "findUserByPlantRecordId",
@@ -123,6 +128,9 @@ public interface UsersApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
             }),
             @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
             })
         }

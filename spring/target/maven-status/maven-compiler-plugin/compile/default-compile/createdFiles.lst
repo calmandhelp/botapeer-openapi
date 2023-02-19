@@ -6,5 +6,6 @@ model/UpdateUserRequest.class
 api/UsersApi.class
 model/User.class
 model/UpdateUserFormData.class
+model/CreateUserRequest.class
 model/ErrorInner.class
 model/ErrorResponse.class
