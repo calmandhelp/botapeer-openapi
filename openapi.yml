@@ -370,6 +370,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+
+  '/plant_records/{plantRecordId}/posts':
+    post:
+      operationId: createPost
+      tags:
+        - PlantRecord
+      description: 投稿作成
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1      
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/CreatePostRequest'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '401':
+          description: 401(Unauthorized)
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
   '/places':
     get:
       operationId: getPlaces
@@ -462,18 +505,19 @@ components:
             format: int64
           plantRecordId:
             type: integer
+            format: int64
           title:
             type: string
           article:
             type: string
-          image_url:
+          imageUrl:
             type: string
           status:
             type: integer
-          created_at:
+          createdAt:
             type: string
             format: date-time
-          updated_at:
+          updatedAt:
             type: string
             format: date-time
     SignInRequest:
@@ -526,6 +570,15 @@ components:
         - name
         - email
         - password
+    CreatePostRequest:
+      properties:
+        title:
+          type: integer
+          format: int64
+        article:
+          type: string
+        imageUrl:
+          type: string
     ErrorResponse:
       properties:
         errors:
