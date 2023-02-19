@@ -263,11 +263,11 @@ paths:
       operationId: getPlantRecordById
       tags:
         - PlantRecord
-      description: 任意の植物記録をplantRecordIdから取得
+      description: 任意の生育記録をplantRecordIdから取得
       parameters:
         - in: path
           name: plantRecordId
-          description: 植物記録ID
+          description: 生育記録ID
           required: true
           schema:
             type: string
@@ -302,6 +302,8 @@ paths:
       tags:
         - PlantRecord
       description: 生育記録作成
+      security:
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -314,13 +316,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JwtAuthenticationResponse'
-        '404':
-          description: 404(User Not Found)
-          content:
-            application/json:
+                $ref: '#/components/schemas/PlantRecordResponse'
+        '401':
+          description: 401(Unauthorized)
+          headers:
+            http_status:
+              description: HTTPステータス
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                type: integer
         '405':
           description: 405(Validation exception)
           content:
