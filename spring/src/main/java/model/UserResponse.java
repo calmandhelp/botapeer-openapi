@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * UserResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T06:30:15.125274Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:19:21.996818Z[Etc/UTC]")
 public class UserResponse {
 
   @JsonProperty("id")

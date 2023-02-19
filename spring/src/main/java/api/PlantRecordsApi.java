@@ -7,7 +7,6 @@ package api;
 
 import model.CreatePlantRecordRequest;
 import model.ErrorResponse;
-import model.JwtAuthenticationResponse;
 import model.PlantRecordResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T06:30:15.125274Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:19:21.996818Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -46,7 +45,7 @@ public interface PlantRecordsApi {
      *
      * @param createPlantRecordRequest  (required)
      * @return ok (status code 200)
-     *         or 404(User Not Found) (status code 404)
+     *         or 401(Unauthorized) (status code 401)
      *         or 405(Validation exception) (status code 405)
      */
     @Operation(
@@ -55,14 +54,15 @@ public interface PlantRecordsApi {
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = JwtAuthenticationResponse.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PlantRecordResponse.class))
             }),
-            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            }),
+            @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
             })
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -71,23 +71,23 @@ public interface PlantRecordsApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<JwtAuthenticationResponse> createPlantRecord(
+    ResponseEntity<PlantRecordResponse> createPlantRecord(
         @Parameter(name = "CreatePlantRecordRequest", description = "", required = true) @Valid @RequestBody CreatePlantRecordRequest createPlantRecordRequest
     );
 
 
     /**
      * GET /plant_records/{plantRecordId}
-     * 任意の植物記録をplantRecordIdから取得
+     * 任意の生育記録をplantRecordIdから取得
      *
-     * @param plantRecordId 植物記録ID (required)
+     * @param plantRecordId 生育記録ID (required)
      * @return ok (status code 200)
      *         or 404(PlantRecord Not Found) (status code 404)
      *         or 405(Validation exception) (status code 405)
      */
     @Operation(
         operationId = "getPlantRecordById",
-        description = "任意の植物記録をplantRecordIdから取得",
+        description = "任意の生育記録をplantRecordIdから取得",
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
@@ -107,7 +107,7 @@ public interface PlantRecordsApi {
         produces = { "application/json" }
     )
     ResponseEntity<PlantRecordResponse> getPlantRecordById(
-        @Parameter(name = "plantRecordId", description = "植物記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
+        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
     );
 
 }
