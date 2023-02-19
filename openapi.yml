@@ -163,6 +163,12 @@ paths:
               description: HTTPステータス
               schema:
                 type: integer
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
   '/users/plant_records/{plantRecordId}':
     get:
       operationId: findUserByPlantRecordId
@@ -190,6 +196,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
   '/auth/signin':
     post:
       operationId: signin
@@ -211,6 +223,37 @@ paths:
                 $ref: '#/components/schemas/JwtAuthenticationResponse'
         '404':
           description: 404(User Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
+  '/auth/signup':
+    post:
+      operationId: createUser
+      tags:
+        - Auth
+      description: サインアップ
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtAuthenticationResponse'
+        '405':
+          description: 405(Validation exception)
           content:
             application/json:
               schema:
@@ -263,7 +306,7 @@ components:
           type: string
       required:
         - usernameOrEmail
-        - password                 
+        - password
     JwtAuthenticationResponse:
       properties:
         accessToken:
@@ -272,7 +315,26 @@ components:
           type: string
       required:
         - accessToken
-        - tokenType         
+        - tokenType
+    CreateUserRequest:
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 15
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 255
+        password:
+          type: string
+          minLength: 8
+          maxLength: 30
+      required:
+        - name
+        - email
+        - password
     ErrorResponse:
       properties:
         errors:
