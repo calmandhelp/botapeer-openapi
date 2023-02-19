@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:19:21.996818Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:27:39.649686Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -108,6 +108,41 @@ public interface PlantRecordsApi {
     )
     ResponseEntity<PlantRecordResponse> getPlantRecordById(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
+    );
+
+
+    /**
+     * GET /plant_records/users/{userId}
+     * 任意の生育記録をplantRecordIdから取得
+     *
+     * @param userId ユーザーID (required)
+     * @return ok (status code 200)
+     *         or 404(PlantRecord Not Found) (status code 404)
+     *         or 405(Validation exception) (status code 405)
+     */
+    @Operation(
+        operationId = "getPlantRecordByUserId",
+        description = "任意の生育記録をplantRecordIdから取得",
+        tags = { "PlantRecord" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PlantRecordResponse.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "404(PlantRecord Not Found)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/plant_records/users/{userId}",
+        produces = { "application/json" }
+    )
+    ResponseEntity<PlantRecordResponse> getPlantRecordByUserId(
+        @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
 }
