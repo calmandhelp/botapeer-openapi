@@ -14,7 +14,23 @@
 
 
 
-export * from './api/auth-api';
-export * from './api/plant-record-api';
-export * from './api/user-api';
+/**
+ * 
+ * @export
+ * @interface PlaceResponse
+ */
+export interface PlaceResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof PlaceResponse
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlaceResponse
+     */
+    'name'?: string;
+}
 

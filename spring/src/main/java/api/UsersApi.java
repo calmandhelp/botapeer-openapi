@@ -7,7 +7,7 @@ package api;
 
 import model.ErrorResponse;
 import model.UpdateUserFormData;
-import model.User;
+import model.UserResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T01:33:16.026807Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T02:29:48.695909Z[Etc/UTC]")
 @Validated
 @Tag(name = "User", description = "the User API")
 public interface UsersApi {
@@ -54,7 +54,7 @@ public interface UsersApi {
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
             }),
             @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
@@ -70,7 +70,7 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    ResponseEntity<User> deleteUser(
+    ResponseEntity<UserResponse> deleteUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
@@ -90,7 +90,7 @@ public interface UsersApi {
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
             }),
             @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -105,7 +105,7 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    ResponseEntity<User> findUserById(
+    ResponseEntity<UserResponse> findUserById(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
@@ -125,7 +125,7 @@ public interface UsersApi {
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
             }),
             @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -140,7 +140,7 @@ public interface UsersApi {
         value = "/users/plant_records/{plantRecordId}",
         produces = { "application/json" }
     )
-    ResponseEntity<User> findUserByPlantRecordId(
+    ResponseEntity<UserResponse> findUserByPlantRecordId(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId
     );
 
@@ -160,7 +160,7 @@ public interface UsersApi {
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = User.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserResponse.class)))
             }),
             @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -175,7 +175,7 @@ public interface UsersApi {
         value = "/users",
         produces = { "application/json" }
     )
-    ResponseEntity<List<User>> getUsersOrGetUserByName(
+    ResponseEntity<List<UserResponse>> getUsersOrGetUserByName(
         @Parameter(name = "username", description = "ユーザー名", in = ParameterIn.QUERY) @Valid @RequestParam(value = "username", required = false) String username
     );
 
@@ -198,7 +198,7 @@ public interface UsersApi {
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
             }),
             @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
@@ -215,7 +215,7 @@ public interface UsersApi {
         produces = { "application/json" },
         consumes = { "multipart/form-data" }
     )
-    ResponseEntity<User> updateUser(
+    ResponseEntity<UserResponse> updateUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) UpdateUserFormData formData,
         @Parameter(name = "profileImage", description = "") @RequestPart(value = "profileImage", required = false) MultipartFile profileImage,

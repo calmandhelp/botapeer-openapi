@@ -4,9 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.ArrayList;
-import java.util.List;
-import model.ErrorInner;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,41 +15,54 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * ErrorResponse
+ * PlaceResponse
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T02:29:48.695909Z[Etc/UTC]")
-public class ErrorResponse {
+public class PlaceResponse {
 
-  @JsonProperty("errors")
-  @Valid
-  private List<ErrorInner> errors = null;
+  @JsonProperty("id")
+  private Integer id;
 
-  public ErrorResponse errors(List<ErrorInner> errors) {
-    this.errors = errors;
-    return this;
-  }
+  @JsonProperty("name")
+  private String name;
 
-  public ErrorResponse addErrorsItem(ErrorInner errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
+  public PlaceResponse id(Integer id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * Get id
+   * @return id
   */
-  @Valid 
-  @Schema(name = "errors", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public List<ErrorInner> getErrors() {
-    return errors;
+  
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public Integer getId() {
+    return id;
   }
 
-  public void setErrors(List<ErrorInner> errors) {
-    this.errors = errors;
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public PlaceResponse name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+  */
+  
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Override
@@ -63,20 +73,22 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.errors, errorResponse.errors);
+    PlaceResponse placeResponse = (PlaceResponse) o;
+    return Objects.equals(this.id, placeResponse.id) &&
+        Objects.equals(this.name, placeResponse.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(id, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class PlaceResponse {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

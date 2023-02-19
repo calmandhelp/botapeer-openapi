@@ -1,9 +1,14 @@
-/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/SignInRequest.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/UpdateUserRequest.java
-/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/JwtAuthenticationResponse.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/api/PlantRecordsApi.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/api/AuthApi.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/api/ApiUtil.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/ErrorInner.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/PlaceResponse.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/PostResponse.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/UserResponse.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/PlantRecordResponse.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/SignInRequest.java
+/home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/JwtAuthenticationResponse.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/ErrorResponse.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/UpdateUserFormData.java
 /home/runner/work/botapeer-openapi/botapeer-openapi/spring/src/main/java/model/CreateUserRequest.java

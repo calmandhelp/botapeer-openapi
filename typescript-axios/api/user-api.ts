@@ -26,7 +26,7 @@ import { ErrorResponse } from '../model';
 // @ts-ignore
 import { UpdateUserFormData } from '../model';
 // @ts-ignore
-import { User } from '../model';
+import { UserResponse } from '../model';
 /**
  * UserApi - axios parameter creator
  * @export
@@ -242,7 +242,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async deleteUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -252,7 +252,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findUserById(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async findUserById(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findUserById(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -262,7 +262,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findUserByPlantRecordId(plantRecordId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async findUserByPlantRecordId(plantRecordId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findUserByPlantRecordId(plantRecordId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -272,7 +272,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsersOrGetUserByName(username?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<User>>> {
+        async getUsersOrGetUserByName(username?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUsersOrGetUserByName(username, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -285,7 +285,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(userId, formData, profileImage, coverImage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -305,7 +305,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser(userId: string, options?: any): AxiosPromise<User> {
+        deleteUser(userId: string, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.deleteUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -314,7 +314,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserById(userId: string, options?: any): AxiosPromise<User> {
+        findUserById(userId: string, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.findUserById(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -323,7 +323,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findUserByPlantRecordId(plantRecordId: string, options?: any): AxiosPromise<User> {
+        findUserByPlantRecordId(plantRecordId: string, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.findUserByPlantRecordId(plantRecordId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -332,7 +332,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsersOrGetUserByName(username?: string, options?: any): AxiosPromise<Array<User>> {
+        getUsersOrGetUserByName(username?: string, options?: any): AxiosPromise<Array<UserResponse>> {
             return localVarFp.getUsersOrGetUserByName(username, options).then((request) => request(axios, basePath));
         },
         /**
@@ -344,7 +344,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: any): AxiosPromise<User> {
+        updateUser(userId: string, formData?: UpdateUserFormData, profileImage?: File, coverImage?: File, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.updateUser(userId, formData, profileImage, coverImage, options).then((request) => request(axios, basePath));
         },
     };

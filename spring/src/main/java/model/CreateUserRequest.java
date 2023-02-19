@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CreateUserRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T01:33:16.026807Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T02:29:48.695909Z[Etc/UTC]")
 public class CreateUserRequest {
 
   @JsonProperty("name")
@@ -77,7 +77,7 @@ public class CreateUserRequest {
    * Get password
    * @return password
   */
-  @NotNull @Size(min = 8, max = 30) 
+  @NotNull @Size(min = 8, max = 20) 
   @Schema(name = "password", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getPassword() {
     return password;
