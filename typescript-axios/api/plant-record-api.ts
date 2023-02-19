@@ -106,7 +106,7 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 任意の生育記録をplantRecordIdから取得
+         * 任意の生育記録をuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -169,7 +169,7 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意の生育記録をplantRecordIdから取得
+         * 任意の生育記録をuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -207,7 +207,7 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
             return localVarFp.getPlantRecordById(plantRecordId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意の生育記録をplantRecordIdから取得
+         * 任意の生育記録をuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -248,7 +248,7 @@ export class PlantRecordApi extends BaseAPI {
     }
 
     /**
-     * 任意の生育記録をplantRecordIdから取得
+     * 任意の生育記録をuserIdから取得
      * @param {string} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

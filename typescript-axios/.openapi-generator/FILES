@@ -2,6 +2,7 @@
 .npmignore
 api.ts
 api/auth-api.ts
+api/place-api.ts
 api/plant-record-api.ts
 api/user-api.ts
 base.ts

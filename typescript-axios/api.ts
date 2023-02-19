@@ -15,6 +15,7 @@
 
 
 export * from './api/auth-api';
+export * from './api/place-api';
 export * from './api/plant-record-api';
 export * from './api/user-api';
 

@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:31:08.631985Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T09:10:36.965323Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -113,7 +113,7 @@ public interface PlantRecordsApi {
 
     /**
      * GET /plant_records/users/{userId}
-     * 任意の生育記録をplantRecordIdから取得
+     * 任意の生育記録をuserIdから取得
      *
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
@@ -122,7 +122,7 @@ public interface PlantRecordsApi {
      */
     @Operation(
         operationId = "getPlantRecordByUserId",
-        description = "任意の生育記録をplantRecordIdから取得",
+        description = "任意の生育記録をuserIdから取得",
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
