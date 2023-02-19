@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CreateUserRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T04:59:14.827774Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:04:01.945148Z[Etc/UTC]")
 public class CreateUserRequest {
 
   @JsonProperty("name")
