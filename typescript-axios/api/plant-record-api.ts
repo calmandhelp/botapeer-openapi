@@ -174,7 +174,7 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPlantRecordByUserId(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlantRecordResponse>> {
+        async getPlantRecordByUserId(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PlantRecordResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlantRecordByUserId(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -212,7 +212,7 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlantRecordByUserId(userId: string, options?: any): AxiosPromise<PlantRecordResponse> {
+        getPlantRecordByUserId(userId: string, options?: any): AxiosPromise<Array<PlantRecordResponse>> {
             return localVarFp.getPlantRecordByUserId(userId, options).then((request) => request(axios, basePath));
         },
     };

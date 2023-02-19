@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:27:39.649686Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T07:31:08.631985Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -126,7 +126,7 @@ public interface PlantRecordsApi {
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = PlantRecordResponse.class))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PlantRecordResponse.class)))
             }),
             @ApiResponse(responseCode = "404", description = "404(PlantRecord Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -141,7 +141,7 @@ public interface PlantRecordsApi {
         value = "/plant_records/users/{userId}",
         produces = { "application/json" }
     )
-    ResponseEntity<PlantRecordResponse> getPlantRecordByUserId(
+    ResponseEntity<List<PlantRecordResponse>> getPlantRecordByUserId(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
