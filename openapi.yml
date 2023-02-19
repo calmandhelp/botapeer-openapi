@@ -380,11 +380,11 @@ paths:
         '200':
           description: ok
           content:
-            application/json:              
+            application/json:
               schema:
                 type: array
                 items:
-                $ref: '#/components/schemas/PlaceResponse'
+                 $ref: '#/components/schemas/PlaceResponse'
 components:
   schemas:
     UpdateUserFormData:
