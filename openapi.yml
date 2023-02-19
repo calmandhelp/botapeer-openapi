@@ -296,6 +296,44 @@ paths:
               description: HTTPステータス
               schema:
                 type: integer
+  '/plant_records/users/{userId}':
+    get:
+      operationId: getPlantRecordByUserId
+      tags:
+        - PlantRecord
+      description: 任意の生育記録をplantRecordIdから取得
+      parameters:
+        - in: path
+          name: userId
+          description: ユーザーID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlantRecordResponse'
+        '404':
+          description: 404(PlantRecord Not Found)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer                
   '/plant_records':
     post:
       operationId: createPlantRecord
