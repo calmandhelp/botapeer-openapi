@@ -24,6 +24,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { CreatePlantRecordRequest } from '../model';
 // @ts-ignore
+import { CreatePostRequest } from '../model';
+// @ts-ignore
 import { ErrorResponse } from '../model';
 // @ts-ignore
 import { PlantRecordResponse } from '../model';
@@ -77,19 +79,14 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
         /**
          * 投稿作成
          * @param {string} plantRecordId 生育記録ID
-         * @param {string} title 
-         * @param {string} article 
          * @param {File} imageUrl 
+         * @param {CreatePostRequest} [formData] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPost: async (plantRecordId: string, title: string, article: string, imageUrl: File, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createPost: async (plantRecordId: string, imageUrl: File, formData?: CreatePostRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'plantRecordId' is not null or undefined
             assertParamExists('createPost', 'plantRecordId', plantRecordId)
-            // verify required parameter 'title' is not null or undefined
-            assertParamExists('createPost', 'title', title)
-            // verify required parameter 'article' is not null or undefined
-            assertParamExists('createPost', 'article', article)
             // verify required parameter 'imageUrl' is not null or undefined
             assertParamExists('createPost', 'imageUrl', imageUrl)
             const localVarPath = `/plant_records/{plantRecordId}/posts`
@@ -111,12 +108,8 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
-            if (title !== undefined) { 
-                localVarFormParams.append('title', title as any);
-            }
-    
-            if (article !== undefined) { 
-                localVarFormParams.append('article', article as any);
+            if (formData !== undefined) { 
+                localVarFormParams.append('formData', new Blob([JSON.stringify(formData)], { type: "application/json", }));
             }
     
             if (imageUrl !== undefined) { 
@@ -225,14 +218,13 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
         /**
          * 投稿作成
          * @param {string} plantRecordId 生育記録ID
-         * @param {string} title 
-         * @param {string} article 
          * @param {File} imageUrl 
+         * @param {CreatePostRequest} [formData] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPost(plantRecordId: string, title: string, article: string, imageUrl: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createPost(plantRecordId, title, article, imageUrl, options);
+        async createPost(plantRecordId: string, imageUrl: File, formData?: CreatePostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createPost(plantRecordId, imageUrl, formData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -277,14 +269,13 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
         /**
          * 投稿作成
          * @param {string} plantRecordId 生育記録ID
-         * @param {string} title 
-         * @param {string} article 
          * @param {File} imageUrl 
+         * @param {CreatePostRequest} [formData] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPost(plantRecordId: string, title: string, article: string, imageUrl: File, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.createPost(plantRecordId, title, article, imageUrl, options).then((request) => request(axios, basePath));
+        createPost(plantRecordId: string, imageUrl: File, formData?: CreatePostRequest, options?: any): AxiosPromise<PostResponse> {
+            return localVarFp.createPost(plantRecordId, imageUrl, formData, options).then((request) => request(axios, basePath));
         },
         /**
          * 任意の生育記録をplantRecordIdから取得
@@ -328,15 +319,14 @@ export class PlantRecordApi extends BaseAPI {
     /**
      * 投稿作成
      * @param {string} plantRecordId 生育記録ID
-     * @param {string} title 
-     * @param {string} article 
      * @param {File} imageUrl 
+     * @param {CreatePostRequest} [formData] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlantRecordApi
      */
-    public createPost(plantRecordId: string, title: string, article: string, imageUrl: File, options?: AxiosRequestConfig) {
-        return PlantRecordApiFp(this.configuration).createPost(plantRecordId, title, article, imageUrl, options).then((request) => request(this.axios, this.basePath));
+    public createPost(plantRecordId: string, imageUrl: File, formData?: CreatePostRequest, options?: AxiosRequestConfig) {
+        return PlantRecordApiFp(this.configuration).createPost(plantRecordId, imageUrl, formData, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

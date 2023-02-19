@@ -22,16 +22,10 @@
 export interface CreatePostRequest {
     /**
      * 
-     * @type {string}
+     * @type {CreatePostRequest}
      * @memberof CreatePostRequest
      */
-    'title': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreatePostRequest
-     */
-    'article': string;
+    'formData'?: CreatePostRequest;
     /**
      * 
      * @type {File}

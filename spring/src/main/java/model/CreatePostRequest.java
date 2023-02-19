@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,54 +19,33 @@ import javax.annotation.Generated;
  * CreatePostRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:14:03.452223Z[Etc/UTC]")
+@JsonTypeName("createPost_request")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:41:44.166613Z[Etc/UTC]")
 public class CreatePostRequest {
 
-  @JsonProperty("title")
-  private String title;
-
-  @JsonProperty("article")
-  private String article;
+  @JsonProperty("formData")
+  private CreatePostRequest formData;
 
   @JsonProperty("imageUrl")
   private org.springframework.core.io.Resource imageUrl;
 
-  public CreatePostRequest title(String title) {
-    this.title = title;
+  public CreatePostRequest formData(CreatePostRequest formData) {
+    this.formData = formData;
     return this;
   }
 
   /**
-   * Get title
-   * @return title
+   * Get formData
+   * @return formData
   */
-  @NotNull 
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
-  public String getTitle() {
-    return title;
+  @Valid 
+  @Schema(name = "formData", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public CreatePostRequest getFormData() {
+    return formData;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public CreatePostRequest article(String article) {
-    this.article = article;
-    return this;
-  }
-
-  /**
-   * Get article
-   * @return article
-  */
-  @NotNull 
-  @Schema(name = "article", requiredMode = Schema.RequiredMode.REQUIRED)
-  public String getArticle() {
-    return article;
-  }
-
-  public void setArticle(String article) {
-    this.article = article;
+  public void setFormData(CreatePostRequest formData) {
+    this.formData = formData;
   }
 
   public CreatePostRequest imageUrl(org.springframework.core.io.Resource imageUrl) {
@@ -96,22 +76,20 @@ public class CreatePostRequest {
       return false;
     }
     CreatePostRequest createPostRequest = (CreatePostRequest) o;
-    return Objects.equals(this.title, createPostRequest.title) &&
-        Objects.equals(this.article, createPostRequest.article) &&
+    return Objects.equals(this.formData, createPostRequest.formData) &&
         Objects.equals(this.imageUrl, createPostRequest.imageUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, article, imageUrl);
+    return Objects.hash(formData, imageUrl);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreatePostRequest {\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    article: ").append(toIndentedString(article)).append("\n");
+    sb.append("    formData: ").append(toIndentedString(formData)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("}");
     return sb.toString();
