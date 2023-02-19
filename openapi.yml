@@ -389,7 +389,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
                 $ref: '#/components/schemas/CreatePostRequest'
       responses:
@@ -577,6 +577,11 @@ components:
           type: string
         imageUrl:
           type: string
+          format: binary
+      required:
+        - title
+        - article
+        - imageUrl
     ErrorResponse:
       properties:
         errors:
