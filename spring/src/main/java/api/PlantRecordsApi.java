@@ -5,7 +5,9 @@
  */
 package api;
 
+import model.CreatePlantRecordRequest;
 import model.ErrorResponse;
+import model.JwtAuthenticationResponse;
 import model.PlantRecordResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,10 +35,46 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:51:09.636340Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T06:30:15.125274Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
+
+    /**
+     * POST /plant_records
+     * 生育記録作成
+     *
+     * @param createPlantRecordRequest  (required)
+     * @return ok (status code 200)
+     *         or 404(User Not Found) (status code 404)
+     *         or 405(Validation exception) (status code 405)
+     */
+    @Operation(
+        operationId = "createPlantRecord",
+        description = "生育記録作成",
+        tags = { "PlantRecord" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = JwtAuthenticationResponse.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/plant_records",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    ResponseEntity<JwtAuthenticationResponse> createPlantRecord(
+        @Parameter(name = "CreatePlantRecordRequest", description = "", required = true) @Valid @RequestBody CreatePlantRecordRequest createPlantRecordRequest
+    );
+
 
     /**
      * GET /plant_records/{plantRecordId}

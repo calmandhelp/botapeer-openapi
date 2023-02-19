@@ -9,6 +9,7 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+model/create-plant-record-request.ts
 model/create-user-request.ts
 model/error-inner.ts
 model/error-response.ts

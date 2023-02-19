@@ -22,7 +22,11 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { CreatePlantRecordRequest } from '../model';
+// @ts-ignore
 import { ErrorResponse } from '../model';
+// @ts-ignore
+import { JwtAuthenticationResponse } from '../model';
 // @ts-ignore
 import { PlantRecordResponse } from '../model';
 /**
@@ -31,6 +35,41 @@ import { PlantRecordResponse } from '../model';
  */
 export const PlantRecordApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 生育記録作成
+         * @param {CreatePlantRecordRequest} createPlantRecordRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPlantRecord: async (createPlantRecordRequest: CreatePlantRecordRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createPlantRecordRequest' is not null or undefined
+            assertParamExists('createPlantRecord', 'createPlantRecordRequest', createPlantRecordRequest)
+            const localVarPath = `/plant_records`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createPlantRecordRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 任意の植物記録をplantRecordIdから取得
          * @param {string} plantRecordId 植物記録ID
@@ -75,6 +114,16 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PlantRecordApiAxiosParamCreator(configuration)
     return {
         /**
+         * 生育記録作成
+         * @param {CreatePlantRecordRequest} createPlantRecordRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<JwtAuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createPlantRecord(createPlantRecordRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 任意の植物記録をplantRecordIdから取得
          * @param {string} plantRecordId 植物記録ID
          * @param {*} [options] Override http request option.
@@ -95,6 +144,15 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
     const localVarFp = PlantRecordApiFp(configuration)
     return {
         /**
+         * 生育記録作成
+         * @param {CreatePlantRecordRequest} createPlantRecordRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: any): AxiosPromise<JwtAuthenticationResponse> {
+            return localVarFp.createPlantRecord(createPlantRecordRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 任意の植物記録をplantRecordIdから取得
          * @param {string} plantRecordId 植物記録ID
          * @param {*} [options] Override http request option.
@@ -113,6 +171,17 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
  * @extends {BaseAPI}
  */
 export class PlantRecordApi extends BaseAPI {
+    /**
+     * 生育記録作成
+     * @param {CreatePlantRecordRequest} createPlantRecordRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlantRecordApi
+     */
+    public createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig) {
+        return PlantRecordApiFp(this.configuration).createPlantRecord(createPlantRecordRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 任意の植物記録をplantRecordIdから取得
      * @param {string} plantRecordId 植物記録ID

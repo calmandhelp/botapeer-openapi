@@ -9,6 +9,7 @@ import model.CreateUserRequest;
 import model.ErrorResponse;
 import model.JwtAuthenticationResponse;
 import model.SignInRequest;
+import model.UserResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:51:09.636340Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T06:30:15.125274Z[Etc/UTC]")
 @Validated
 @Tag(name = "Auth", description = "the Auth API")
 public interface AuthApi {
@@ -54,7 +55,7 @@ public interface AuthApi {
         tags = { "Auth" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = JwtAuthenticationResponse.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
             }),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -67,7 +68,7 @@ public interface AuthApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    ResponseEntity<JwtAuthenticationResponse> createUser(
+    ResponseEntity<UserResponse> createUser(
         @Parameter(name = "CreateUserRequest", description = "", required = true) @Valid @RequestBody CreateUserRequest createUserRequest
     );
 

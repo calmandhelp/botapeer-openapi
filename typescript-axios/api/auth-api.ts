@@ -29,6 +29,8 @@ import { ErrorResponse } from '../model';
 import { JwtAuthenticationResponse } from '../model';
 // @ts-ignore
 import { SignInRequest } from '../model';
+// @ts-ignore
+import { UserResponse } from '../model';
 /**
  * AuthApi - axios parameter creator
  * @export
@@ -121,7 +123,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createUser(createUserRequest: CreateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<JwtAuthenticationResponse>> {
+        async createUser(createUserRequest: CreateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(createUserRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -151,7 +153,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser(createUserRequest: CreateUserRequest, options?: any): AxiosPromise<JwtAuthenticationResponse> {
+        createUser(createUserRequest: CreateUserRequest, options?: any): AxiosPromise<UserResponse> {
             return localVarFp.createUser(createUserRequest, options).then((request) => request(axios, basePath));
         },
         /**
