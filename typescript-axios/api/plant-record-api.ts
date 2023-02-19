@@ -26,8 +26,6 @@ import { CreatePlantRecordRequest } from '../model';
 // @ts-ignore
 import { ErrorResponse } from '../model';
 // @ts-ignore
-import { JwtAuthenticationResponse } from '../model';
-// @ts-ignore
 import { PlantRecordResponse } from '../model';
 /**
  * PlantRecordApi - axios parameter creator
@@ -56,6 +54,10 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -71,8 +73,8 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 任意の植物記録をplantRecordIdから取得
-         * @param {string} plantRecordId 植物記録ID
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -119,13 +121,13 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<JwtAuthenticationResponse>> {
+        async createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlantRecordResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPlantRecord(createPlantRecordRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意の植物記録をplantRecordIdから取得
-         * @param {string} plantRecordId 植物記録ID
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -149,12 +151,12 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: any): AxiosPromise<JwtAuthenticationResponse> {
+        createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: any): AxiosPromise<PlantRecordResponse> {
             return localVarFp.createPlantRecord(createPlantRecordRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意の植物記録をplantRecordIdから取得
-         * @param {string} plantRecordId 植物記録ID
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -183,8 +185,8 @@ export class PlantRecordApi extends BaseAPI {
     }
 
     /**
-     * 任意の植物記録をplantRecordIdから取得
-     * @param {string} plantRecordId 植物記録ID
+     * 任意の生育記録をplantRecordIdから取得
+     * @param {string} plantRecordId 生育記録ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PlantRecordApi
