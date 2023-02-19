@@ -105,6 +105,39 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} userId ユーザーID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlantRecordByUserId: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('getPlantRecordByUserId', 'userId', userId)
+            const localVarPath = `/plant_records/users/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -135,6 +168,16 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlantRecordById(plantRecordId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} userId ユーザーID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPlantRecordByUserId(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlantRecordResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPlantRecordByUserId(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -162,6 +205,15 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
          */
         getPlantRecordById(plantRecordId: string, options?: any): AxiosPromise<PlantRecordResponse> {
             return localVarFp.getPlantRecordById(plantRecordId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 任意の生育記録をplantRecordIdから取得
+         * @param {string} userId ユーザーID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPlantRecordByUserId(userId: string, options?: any): AxiosPromise<PlantRecordResponse> {
+            return localVarFp.getPlantRecordByUserId(userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -193,5 +245,16 @@ export class PlantRecordApi extends BaseAPI {
      */
     public getPlantRecordById(plantRecordId: string, options?: AxiosRequestConfig) {
         return PlantRecordApiFp(this.configuration).getPlantRecordById(plantRecordId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 任意の生育記録をplantRecordIdから取得
+     * @param {string} userId ユーザーID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PlantRecordApi
+     */
+    public getPlantRecordByUserId(userId: string, options?: AxiosRequestConfig) {
+        return PlantRecordApiFp(this.configuration).getPlantRecordByUserId(userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
