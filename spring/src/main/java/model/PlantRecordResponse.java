@@ -24,11 +24,11 @@ import javax.annotation.Generated;
  * PlantRecordResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:04:01.945148Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:51:09.636340Z[Etc/UTC]")
 public class PlantRecordResponse {
 
   @JsonProperty("id")
-  private Integer id;
+  private Long id;
 
   @JsonProperty("title")
   private String title;
@@ -55,7 +55,7 @@ public class PlantRecordResponse {
   @Valid
   private List<PostResponse> posts = null;
 
-  public PlantRecordResponse id(Integer id) {
+  public PlantRecordResponse id(Long id) {
     this.id = id;
     return this;
   }
@@ -66,11 +66,11 @@ public class PlantRecordResponse {
   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
