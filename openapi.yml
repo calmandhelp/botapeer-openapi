@@ -301,7 +301,7 @@ paths:
       operationId: getPlantRecordByUserId
       tags:
         - PlantRecord
-      description: 任意の生育記録をplantRecordIdから取得
+      description: 任意の生育記録をuserIdから取得
       parameters:
         - in: path
           name: userId
