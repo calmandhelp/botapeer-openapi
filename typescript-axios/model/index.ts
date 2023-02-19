@@ -1,3 +1,4 @@
+export * from './create-user-request';
 export * from './error-inner';
 export * from './error-response';
 export * from './jwt-authentication-response';

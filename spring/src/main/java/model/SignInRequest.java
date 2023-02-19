@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * SignInRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-18T10:32:44.374167Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T01:33:16.026807Z[Etc/UTC]")
 public class SignInRequest {
 
   @JsonProperty("usernameOrEmail")

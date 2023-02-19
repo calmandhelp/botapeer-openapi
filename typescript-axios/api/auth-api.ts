@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { CreateUserRequest } from '../model';
+// @ts-ignore
 import { ErrorResponse } from '../model';
 // @ts-ignore
 import { JwtAuthenticationResponse } from '../model';
@@ -33,6 +35,41 @@ import { SignInRequest } from '../model';
  */
 export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * サインアップ
+         * @param {CreateUserRequest} createUserRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createUser: async (createUserRequest: CreateUserRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createUserRequest' is not null or undefined
+            assertParamExists('createUser', 'createUserRequest', createUserRequest)
+            const localVarPath = `/auth/signup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createUserRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * サインイン
          * @param {SignInRequest} signInRequest 
@@ -79,6 +116,16 @@ export const AuthApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
     return {
         /**
+         * サインアップ
+         * @param {CreateUserRequest} createUserRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createUser(createUserRequest: CreateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<JwtAuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(createUserRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * サインイン
          * @param {SignInRequest} signInRequest 
          * @param {*} [options] Override http request option.
@@ -99,6 +146,15 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = AuthApiFp(configuration)
     return {
         /**
+         * サインアップ
+         * @param {CreateUserRequest} createUserRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createUser(createUserRequest: CreateUserRequest, options?: any): AxiosPromise<JwtAuthenticationResponse> {
+            return localVarFp.createUser(createUserRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * サインイン
          * @param {SignInRequest} signInRequest 
          * @param {*} [options] Override http request option.
@@ -117,6 +173,17 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
  * @extends {BaseAPI}
  */
 export class AuthApi extends BaseAPI {
+    /**
+     * サインアップ
+     * @param {CreateUserRequest} createUserRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public createUser(createUserRequest: CreateUserRequest, options?: AxiosRequestConfig) {
+        return AuthApiFp(this.configuration).createUser(createUserRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * サインイン
      * @param {SignInRequest} signInRequest 
