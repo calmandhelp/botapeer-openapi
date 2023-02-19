@@ -370,7 +370,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-
   '/plant_records/{plantRecordId}/posts':
     post:
       operationId: createPost
@@ -573,8 +572,7 @@ components:
     CreatePostRequest:
       properties:
         title:
-          type: integer
-          format: int64
+          type: string
         article:
           type: string
         imageUrl:
