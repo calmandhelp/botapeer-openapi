@@ -25,18 +25,18 @@ export interface CreatePostRequest {
      * @type {string}
      * @memberof CreatePostRequest
      */
-    'title'?: string;
+    'title': string;
     /**
      * 
      * @type {string}
      * @memberof CreatePostRequest
      */
-    'article'?: string;
+    'article': string;
     /**
      * 
-     * @type {string}
+     * @type {File}
      * @memberof CreatePostRequest
      */
-    'imageUrl'?: string;
+    'imageUrl': File;
 }
 

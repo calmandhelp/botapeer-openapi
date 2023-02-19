@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CreatePostRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:57:22.758459Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:14:03.452223Z[Etc/UTC]")
 public class CreatePostRequest {
 
   @JsonProperty("title")
@@ -28,7 +28,7 @@ public class CreatePostRequest {
   private String article;
 
   @JsonProperty("imageUrl")
-  private String imageUrl;
+  private org.springframework.core.io.Resource imageUrl;
 
   public CreatePostRequest title(String title) {
     this.title = title;
@@ -39,8 +39,8 @@ public class CreatePostRequest {
    * Get title
    * @return title
   */
-  
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getTitle() {
     return title;
   }
@@ -58,8 +58,8 @@ public class CreatePostRequest {
    * Get article
    * @return article
   */
-  
-  @Schema(name = "article", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "article", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getArticle() {
     return article;
   }
@@ -68,7 +68,7 @@ public class CreatePostRequest {
     this.article = article;
   }
 
-  public CreatePostRequest imageUrl(String imageUrl) {
+  public CreatePostRequest imageUrl(org.springframework.core.io.Resource imageUrl) {
     this.imageUrl = imageUrl;
     return this;
   }
@@ -77,13 +77,13 @@ public class CreatePostRequest {
    * Get imageUrl
    * @return imageUrl
   */
-  
-  @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public String getImageUrl() {
+  @NotNull @Valid 
+  @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.REQUIRED)
+  public org.springframework.core.io.Resource getImageUrl() {
     return imageUrl;
   }
 
-  public void setImageUrl(String imageUrl) {
+  public void setImageUrl(org.springframework.core.io.Resource imageUrl) {
     this.imageUrl = imageUrl;
   }
 

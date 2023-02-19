@@ -6,7 +6,6 @@
 package api;
 
 import model.CreatePlantRecordRequest;
-import model.CreatePostRequest;
 import model.ErrorResponse;
 import model.PlantRecordResponse;
 import model.PostResponse;
@@ -36,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T12:57:22.758459Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:14:03.452223Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -83,7 +82,9 @@ public interface PlantRecordsApi {
      * 投稿作成
      *
      * @param plantRecordId 生育記録ID (required)
-     * @param createPostRequest  (required)
+     * @param title  (required)
+     * @param article  (required)
+     * @param imageUrl  (required)
      * @return ok (status code 200)
      *         or 401(Unauthorized) (status code 401)
      *         or 405(Validation exception) (status code 405)
@@ -109,11 +110,13 @@ public interface PlantRecordsApi {
         method = RequestMethod.POST,
         value = "/plant_records/{plantRecordId}/posts",
         produces = { "application/json" },
-        consumes = { "application/json" }
+        consumes = { "multipart/form-data" }
     )
     ResponseEntity<PostResponse> createPost(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
-        @Parameter(name = "CreatePostRequest", description = "", required = true) @Valid @RequestBody CreatePostRequest createPostRequest
+        @Parameter(name = "title", description = "", required = true) @Valid @RequestParam(value = "title", required = true) String title,
+        @Parameter(name = "article", description = "", required = true) @Valid @RequestParam(value = "article", required = true) String article,
+        @Parameter(name = "imageUrl", description = "", required = true) @RequestPart(value = "imageUrl", required = true) MultipartFile imageUrl
     );
 
 
