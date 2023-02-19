@@ -391,7 +391,14 @@ paths:
         content:
           multipart/form-data:
             schema:
-                $ref: '#/components/schemas/CreatePostRequest'
+              properties:
+                formData:
+                  $ref: '#/components/schemas/CreatePostRequest'
+                imageUrl:
+                  type: string
+                  format: binary
+              required:
+                - imageUrl
       responses:
         '200':
           description: ok
@@ -575,13 +582,9 @@ components:
           type: string
         article:
           type: string
-        imageUrl:
-          type: string
-          format: binary
       required:
         - title
         - article
-        - imageUrl
     ErrorResponse:
       properties:
         errors:
