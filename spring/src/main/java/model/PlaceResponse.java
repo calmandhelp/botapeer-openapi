@@ -18,16 +18,16 @@ import javax.annotation.Generated;
  * PlaceResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T04:59:14.827774Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T05:04:01.945148Z[Etc/UTC]")
 public class PlaceResponse {
 
   @JsonProperty("id")
-  private Integer id;
+  private Long id;
 
   @JsonProperty("name")
   private String name;
 
-  public PlaceResponse id(Integer id) {
+  public PlaceResponse id(Long id) {
     this.id = id;
     return this;
   }
@@ -38,11 +38,11 @@ public class PlaceResponse {
   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
