@@ -34,6 +34,6 @@ export interface CreatePostRequest {
      * @type {File}
      * @memberof CreatePostRequest
      */
-    'imageUrl': File;
+    'image': File;
 }
 
