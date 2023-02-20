@@ -394,11 +394,11 @@ paths:
               properties:
                 formData:
                   $ref: '#/components/schemas/CreatePostFormData'
-                imageUrl:
+                image:
                   type: string
                   format: binary
               required:
-                - imageUrl
+                - image
       responses:
         '200':
           description: ok
