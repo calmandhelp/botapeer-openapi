@@ -34,14 +34,14 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T10:14:43.845601Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T12:45:08.573237Z[Etc/UTC]")
 @Validated
 @Tag(name = "User", description = "the User API")
 public interface UsersApi {
 
     /**
      * DELETE /users/{userId}
-     * 任意のUserを削除
+     * 任意のUserをuserIdから削除
      *
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
@@ -50,12 +50,10 @@ public interface UsersApi {
      */
     @Operation(
         operationId = "deleteUser",
-        description = "任意のUserを削除",
+        description = "任意のUserをuserIdから削除",
         tags = { "User" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = UserResponse.class))
-            }),
+            @ApiResponse(responseCode = "200", description = "ok"),
             @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -70,14 +68,14 @@ public interface UsersApi {
         value = "/users/{userId}",
         produces = { "application/json" }
     )
-    ResponseEntity<UserResponse> deleteUser(
+    ResponseEntity<Void> deleteUser(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
 
     /**
      * GET /users/{userId}
-     * 任意のUserを取得
+     * 任意のUserをuserIdから取得
      *
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
@@ -86,7 +84,7 @@ public interface UsersApi {
      */
     @Operation(
         operationId = "findUserById",
-        description = "任意のUserを取得",
+        description = "任意のUserをuserIdから取得",
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
@@ -182,7 +180,7 @@ public interface UsersApi {
 
     /**
      * PATCH /users/{userId}
-     * 任意のUserを更新
+     * 任意のUserをuserIdから更新
      *
      * @param userId ユーザーID (required)
      * @param formData  (optional)
@@ -194,7 +192,7 @@ public interface UsersApi {
      */
     @Operation(
         operationId = "updateUser",
-        description = "任意のUserを更新",
+        description = "任意のUserをuserIdから更新",
         tags = { "User" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
