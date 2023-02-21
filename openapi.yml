@@ -451,7 +451,7 @@ paths:
         '200':
           description: ok
         '404':
-          description: 404(User Not Found)
+          description: 404(Post Not Found)
           content:
             application/json:
               schema:
