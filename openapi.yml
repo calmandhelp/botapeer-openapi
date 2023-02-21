@@ -418,7 +418,54 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'                
+                $ref: '#/components/schemas/ErrorResponse'
+  '/plant_records/{plantRecordId}/posts/{postId}':
+    get:
+      operationId: getPostById
+      tags:
+        - PlantRecord
+      description: 投稿取得
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: path
+          name: postId
+          description: 投稿ID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponse'
+        '404':
+          description: 404(User Not Found)
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer
   '/places':
     get:
       operationId: getPlaces
