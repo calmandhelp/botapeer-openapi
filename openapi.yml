@@ -42,17 +42,12 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer
   '/users/{userId}':
     get:
       operationId: findUserById
       tags:
         - User
-      description: 任意のUserを取得
+      description: 任意のUserをuserIdから取得
       parameters:
         - in: path
           name: userId
@@ -80,16 +75,11 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer
     patch:
       operationId: updateUser
       tags:
         - User
-      description: 任意のUserを更新
+      description: 任意のUserをuserIdから更新
       security:
         - bearerAuth: []
       parameters:
@@ -129,16 +119,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer
     delete:
       operationId: deleteUser
       tags:
         - User
-      description: 任意のUserを削除
+      description: 任意のUserをuserIdから削除
       security:
         - bearerAuth: []
       parameters:
@@ -152,17 +137,8 @@ paths:
       responses:
         '200':
           description: ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponse'
         '401':
           description: 401(Unauthorized)
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer
         '405':
           description: 405(Validation exception)
           content:
@@ -291,11 +267,6 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer
   '/plant_records/users/{userId}':
     get:
       operationId: getPlantRecordByUserId
@@ -331,11 +302,6 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
-              schema:
-                type: integer                
   '/plant_records':
     post:
       operationId: createPlantRecord
@@ -383,7 +349,7 @@ paths:
           required: true
           schema:
             type: string
-            example: 1      
+            example: 1
       security:
         - bearerAuth: []
       requestBody:
@@ -459,11 +425,43 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-          headers:
-            http_status:
-              description: HTTPステータス
+    delete:
+      operationId: deletePost
+      tags:
+        - PlantRecord
+      description: 任意の投稿をplantRecordIdとpostIdから削除
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: path
+          name: postId
+          description: 投稿ID
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        '200':
+          description: ok
+        '404':
+          description: 404(User Not Found)
+          content:
+            application/json:
               schema:
-                type: integer
+                  $ref: '#/components/schemas/ErrorResponse'  
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ErrorResponse'
   '/places':
     get:
       operationId: getPlaces
