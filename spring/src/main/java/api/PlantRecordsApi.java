@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T10:14:43.845601Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T12:45:08.573237Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -116,6 +116,44 @@ public interface PlantRecordsApi {
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "image", description = "", required = true) @RequestPart(value = "image", required = true) MultipartFile image,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) CreatePostFormData formData
+    );
+
+
+    /**
+     * DELETE /plant_records/{plantRecordId}/posts/{postId}
+     * 任意の投稿をplantRecordIdとpostIdから削除
+     *
+     * @param plantRecordId 生育記録ID (required)
+     * @param postId 投稿ID (required)
+     * @return ok (status code 200)
+     *         or 404(User Not Found) (status code 404)
+     *         or 405(Validation exception) (status code 405)
+     */
+    @Operation(
+        operationId = "deletePost",
+        description = "任意の投稿をplantRecordIdとpostIdから削除",
+        tags = { "PlantRecord" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok"),
+            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/plant_records/{plantRecordId}/posts/{postId}",
+        produces = { "application/json" }
+    )
+    ResponseEntity<Void> deletePost(
+        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
+        @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );
 
 

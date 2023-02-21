@@ -34,7 +34,7 @@ import { UserResponse } from '../model';
 export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 任意のUserを削除
+         * 任意のUserをuserIdから削除
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -71,7 +71,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 任意のUserを取得
+         * 任意のUserをuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -171,7 +171,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 任意のUserを更新
+         * 任意のUserをuserIdから更新
          * @param {string} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
@@ -237,17 +237,17 @@ export const UserApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
     return {
         /**
-         * 任意のUserを削除
+         * 任意のUserをuserIdから削除
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
+        async deleteUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意のUserを取得
+         * 任意のUserをuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -277,7 +277,7 @@ export const UserApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意のUserを更新
+         * 任意のUserをuserIdから更新
          * @param {string} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
@@ -300,16 +300,16 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = UserApiFp(configuration)
     return {
         /**
-         * 任意のUserを削除
+         * 任意のUserをuserIdから削除
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser(userId: string, options?: any): AxiosPromise<UserResponse> {
+        deleteUser(userId: string, options?: any): AxiosPromise<void> {
             return localVarFp.deleteUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意のUserを取得
+         * 任意のUserをuserIdから取得
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -336,7 +336,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
             return localVarFp.getUsersOrGetUserByName(username, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意のUserを更新
+         * 任意のUserをuserIdから更新
          * @param {string} userId ユーザーID
          * @param {UpdateUserFormData} [formData] 
          * @param {File} [profileImage] 
@@ -358,7 +358,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
  */
 export class UserApi extends BaseAPI {
     /**
-     * 任意のUserを削除
+     * 任意のUserをuserIdから削除
      * @param {string} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -369,7 +369,7 @@ export class UserApi extends BaseAPI {
     }
 
     /**
-     * 任意のUserを取得
+     * 任意のUserをuserIdから取得
      * @param {string} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -402,7 +402,7 @@ export class UserApi extends BaseAPI {
     }
 
     /**
-     * 任意のUserを更新
+     * 任意のUserをuserIdから更新
      * @param {string} userId ユーザーID
      * @param {UpdateUserFormData} [formData] 
      * @param {File} [profileImage] 
