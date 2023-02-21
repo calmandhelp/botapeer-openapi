@@ -424,7 +424,7 @@ paths:
       operationId: getPostById
       tags:
         - PlantRecord
-      description: 投稿取得
+      description: 任意の投稿をplantRecordIdとpostIdから取得
       parameters:
         - in: path
           name: plantRecordId
@@ -446,8 +446,6 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
                   $ref: '#/components/schemas/PostResponse'
         '404':
           description: 404(User Not Found)
