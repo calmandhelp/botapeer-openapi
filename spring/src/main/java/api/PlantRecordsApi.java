@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T12:45:08.573237Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T12:47:55.513966Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -126,7 +126,7 @@ public interface PlantRecordsApi {
      * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
      * @return ok (status code 200)
-     *         or 404(User Not Found) (status code 404)
+     *         or 404(Post Not Found) (status code 404)
      *         or 405(Validation exception) (status code 405)
      */
     @Operation(
@@ -135,7 +135,7 @@ public interface PlantRecordsApi {
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok"),
-            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
+            @ApiResponse(responseCode = "404", description = "404(Post Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
             }),
             @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
