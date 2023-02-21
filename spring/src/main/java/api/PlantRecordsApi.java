@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:50:07.935145Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-20T07:02:22.601071Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -83,7 +83,7 @@ public interface PlantRecordsApi {
      * 投稿作成
      *
      * @param plantRecordId 生育記録ID (required)
-     * @param imageUrl  (required)
+     * @param image  (required)
      * @param formData  (optional)
      * @return ok (status code 200)
      *         or 401(Unauthorized) (status code 401)
@@ -114,7 +114,7 @@ public interface PlantRecordsApi {
     )
     ResponseEntity<PostResponse> createPost(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
-        @Parameter(name = "imageUrl", description = "", required = true) @RequestPart(value = "imageUrl", required = true) MultipartFile imageUrl,
+        @Parameter(name = "image", description = "", required = true) @RequestPart(value = "image", required = true) MultipartFile image,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) CreatePostFormData formData
     );
 

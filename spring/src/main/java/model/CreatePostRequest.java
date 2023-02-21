@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("createPost_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-19T13:50:07.935145Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-20T07:02:22.601071Z[Etc/UTC]")
 public class CreatePostRequest {
 
   @JsonProperty("formData")
   private CreatePostFormData formData;
 
-  @JsonProperty("imageUrl")
-  private org.springframework.core.io.Resource imageUrl;
+  @JsonProperty("image")
+  private org.springframework.core.io.Resource image;
 
   public CreatePostRequest formData(CreatePostFormData formData) {
     this.formData = formData;
@@ -49,23 +49,23 @@ public class CreatePostRequest {
     this.formData = formData;
   }
 
-  public CreatePostRequest imageUrl(org.springframework.core.io.Resource imageUrl) {
-    this.imageUrl = imageUrl;
+  public CreatePostRequest image(org.springframework.core.io.Resource image) {
+    this.image = image;
     return this;
   }
 
   /**
-   * Get imageUrl
-   * @return imageUrl
+   * Get image
+   * @return image
   */
   @NotNull @Valid 
-  @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.REQUIRED)
-  public org.springframework.core.io.Resource getImageUrl() {
-    return imageUrl;
+  @Schema(name = "image", requiredMode = Schema.RequiredMode.REQUIRED)
+  public org.springframework.core.io.Resource getImage() {
+    return image;
   }
 
-  public void setImageUrl(org.springframework.core.io.Resource imageUrl) {
-    this.imageUrl = imageUrl;
+  public void setImage(org.springframework.core.io.Resource image) {
+    this.image = image;
   }
 
   @Override
@@ -78,12 +78,12 @@ public class CreatePostRequest {
     }
     CreatePostRequest createPostRequest = (CreatePostRequest) o;
     return Objects.equals(this.formData, createPostRequest.formData) &&
-        Objects.equals(this.imageUrl, createPostRequest.imageUrl);
+        Objects.equals(this.image, createPostRequest.image);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(formData, imageUrl);
+    return Objects.hash(formData, image);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class CreatePostRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreatePostRequest {\n");
     sb.append("    formData: ").append(toIndentedString(formData)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("}");
     return sb.toString();
   }
