@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T10:04:45.619036Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T10:14:43.845601Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -191,7 +191,7 @@ public interface PlantRecordsApi {
 
     /**
      * GET /plant_records/{plantRecordId}/posts/{postId}
-     * 投稿取得
+     * 任意の投稿をplantRecordIdとpostIdから取得
      *
      * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
@@ -201,11 +201,11 @@ public interface PlantRecordsApi {
      */
     @Operation(
         operationId = "getPostById",
-        description = "投稿取得",
+        description = "任意の投稿をplantRecordIdとpostIdから取得",
         tags = { "PlantRecord" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PostResponse.class)))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PostResponse.class))
             }),
             @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
@@ -220,7 +220,7 @@ public interface PlantRecordsApi {
         value = "/plant_records/{plantRecordId}/posts/{postId}",
         produces = { "application/json" }
     )
-    ResponseEntity<List<PostResponse>> getPostById(
+    ResponseEntity<PostResponse> getPostById(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );

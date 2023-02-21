@@ -196,7 +196,7 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 投稿取得
+         * 任意の投稿をplantRecordIdとpostIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
@@ -285,13 +285,13 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 投稿取得
+         * 任意の投稿をplantRecordIdとpostIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPostById(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PostResponse>>> {
+        async getPostById(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPostById(plantRecordId, postId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -344,13 +344,13 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
             return localVarFp.getPlantRecordByUserId(userId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 投稿取得
+         * 任意の投稿をplantRecordIdとpostIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostById(plantRecordId: string, postId: string, options?: any): AxiosPromise<Array<PostResponse>> {
+        getPostById(plantRecordId: string, postId: string, options?: any): AxiosPromise<PostResponse> {
             return localVarFp.getPostById(plantRecordId, postId, options).then((request) => request(axios, basePath));
         },
     };
@@ -410,7 +410,7 @@ export class PlantRecordApi extends BaseAPI {
     }
 
     /**
-     * 投稿取得
+     * 任意の投稿をplantRecordIdとpostIdから取得
      * @param {string} plantRecordId 生育記録ID
      * @param {string} postId 投稿ID
      * @param {*} [options] Override http request option.
