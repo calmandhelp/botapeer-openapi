@@ -4,12 +4,14 @@ api.ts
 api/auth-api.ts
 api/place-api.ts
 api/plant-record-api.ts
+api/post-api.ts
 api/user-api.ts
 base.ts
 common.ts
 configuration.ts
 git_push.sh
 index.ts
+model/create-like-to-post-request.ts
 model/create-plant-record-request.ts
 model/create-post-form-data.ts
 model/create-post-request.ts
@@ -18,6 +20,7 @@ model/error-inner.ts
 model/error-response.ts
 model/index.ts
 model/jwt-authentication-response.ts
+model/like-response.ts
 model/place-response.ts
 model/plant-record-response.ts
 model/post-response.ts

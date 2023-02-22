@@ -24,13 +24,9 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { CreatePlantRecordRequest } from '../model';
 // @ts-ignore
-import { CreatePostFormData } from '../model';
-// @ts-ignore
 import { ErrorResponse } from '../model';
 // @ts-ignore
 import { PlantRecordResponse } from '../model';
-// @ts-ignore
-import { PostResponse } from '../model';
 /**
  * PlantRecordApi - axios parameter creator
  * @export
@@ -70,100 +66,6 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(createPlantRecordRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 投稿作成
-         * @param {string} plantRecordId 生育記録ID
-         * @param {File} image 
-         * @param {CreatePostFormData} [formData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createPost: async (plantRecordId: string, image: File, formData?: CreatePostFormData, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('createPost', 'plantRecordId', plantRecordId)
-            // verify required parameter 'image' is not null or undefined
-            assertParamExists('createPost', 'image', image)
-            const localVarPath = `/plant_records/{plantRecordId}/posts`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-            if (formData !== undefined) { 
-                localVarFormParams.append('formData', new Blob([JSON.stringify(formData)], { type: "application/json", }));
-            }
-    
-            if (image !== undefined) { 
-                localVarFormParams.append('image', image as any);
-            }
-    
-    
-            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = localVarFormParams;
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deletePost: async (plantRecordId: string, postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('deletePost', 'plantRecordId', plantRecordId)
-            // verify required parameter 'postId' is not null or undefined
-            assertParamExists('deletePost', 'postId', postId)
-            const localVarPath = `/plant_records/{plantRecordId}/posts/{postId}`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
-                .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -236,43 +138,6 @@ export const PlantRecordApiAxiosParamCreator = function (configuration?: Configu
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPostById: async (plantRecordId: string, postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('getPostById', 'plantRecordId', plantRecordId)
-            // verify required parameter 'postId' is not null or undefined
-            assertParamExists('getPostById', 'postId', postId)
-            const localVarPath = `/plant_records/{plantRecordId}/posts/{postId}`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
-                .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -291,29 +156,6 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
          */
         async createPlantRecord(createPlantRecordRequest: CreatePlantRecordRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlantRecordResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createPlantRecord(createPlantRecordRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 投稿作成
-         * @param {string} plantRecordId 生育記録ID
-         * @param {File} image 
-         * @param {CreatePostFormData} [formData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createPost(plantRecordId: string, image: File, formData?: CreatePostFormData, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createPost(plantRecordId, image, formData, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deletePost(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePost(plantRecordId, postId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -336,17 +178,6 @@ export const PlantRecordApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPlantRecordByUserId(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPostById(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPostById(plantRecordId, postId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
     }
 };
 
@@ -367,27 +198,6 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
             return localVarFp.createPlantRecord(createPlantRecordRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * 投稿作成
-         * @param {string} plantRecordId 生育記録ID
-         * @param {File} image 
-         * @param {CreatePostFormData} [formData] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createPost(plantRecordId: string, image: File, formData?: CreatePostFormData, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.createPost(plantRecordId, image, formData, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deletePost(plantRecordId: string, postId: string, options?: any): AxiosPromise<void> {
-            return localVarFp.deletePost(plantRecordId, postId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * 任意の生育記録をplantRecordIdから取得
          * @param {string} plantRecordId 生育記録ID
          * @param {*} [options] Override http request option.
@@ -404,16 +214,6 @@ export const PlantRecordApiFactory = function (configuration?: Configuration, ba
          */
         getPlantRecordByUserId(userId: string, options?: any): AxiosPromise<Array<PlantRecordResponse>> {
             return localVarFp.getPlantRecordByUserId(userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
-         * @param {string} postId 投稿ID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPostById(plantRecordId: string, postId: string, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.getPostById(plantRecordId, postId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -437,31 +237,6 @@ export class PlantRecordApi extends BaseAPI {
     }
 
     /**
-     * 投稿作成
-     * @param {string} plantRecordId 生育記録ID
-     * @param {File} image 
-     * @param {CreatePostFormData} [formData] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlantRecordApi
-     */
-    public createPost(plantRecordId: string, image: File, formData?: CreatePostFormData, options?: AxiosRequestConfig) {
-        return PlantRecordApiFp(this.configuration).createPost(plantRecordId, image, formData, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 任意の投稿をplantRecordIdとpostIdから削除
-     * @param {string} plantRecordId 生育記録ID
-     * @param {string} postId 投稿ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlantRecordApi
-     */
-    public deletePost(plantRecordId: string, postId: string, options?: AxiosRequestConfig) {
-        return PlantRecordApiFp(this.configuration).deletePost(plantRecordId, postId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * 任意の生育記録をplantRecordIdから取得
      * @param {string} plantRecordId 生育記録ID
      * @param {*} [options] Override http request option.
@@ -481,17 +256,5 @@ export class PlantRecordApi extends BaseAPI {
      */
     public getPlantRecordByUserId(userId: string, options?: AxiosRequestConfig) {
         return PlantRecordApiFp(this.configuration).getPlantRecordByUserId(userId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 任意の投稿をplantRecordIdとpostIdから取得
-     * @param {string} plantRecordId 生育記録ID
-     * @param {string} postId 投稿ID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PlantRecordApi
-     */
-    public getPostById(plantRecordId: string, postId: string, options?: AxiosRequestConfig) {
-        return PlantRecordApiFp(this.configuration).getPostById(plantRecordId, postId, options).then((request) => request(this.axios, this.basePath));
     }
 }

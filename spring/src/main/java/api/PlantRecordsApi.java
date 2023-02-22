@@ -6,10 +6,8 @@
 package api;
 
 import model.CreatePlantRecordRequest;
-import model.CreatePostFormData;
 import model.ErrorResponse;
 import model.PlantRecordResponse;
-import model.PostResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -36,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T04:59:25.309286Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:04:32.207759Z[Etc/UTC]")
 @Validated
 @Tag(name = "PlantRecord", description = "the PlantRecord API")
 public interface PlantRecordsApi {
@@ -75,85 +73,6 @@ public interface PlantRecordsApi {
     )
     ResponseEntity<PlantRecordResponse> createPlantRecord(
         @Parameter(name = "CreatePlantRecordRequest", description = "", required = true) @Valid @RequestBody CreatePlantRecordRequest createPlantRecordRequest
-    );
-
-
-    /**
-     * POST /plant_records/{plantRecordId}/posts
-     * 投稿作成
-     *
-     * @param plantRecordId 生育記録ID (required)
-     * @param image  (required)
-     * @param formData  (optional)
-     * @return ok (status code 200)
-     *         or 401(Unauthorized) (status code 401)
-     *         or 405(Validation exception) (status code 405)
-     */
-    @Operation(
-        operationId = "createPost",
-        description = "投稿作成",
-        tags = { "PlantRecord" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = PostResponse.class))
-            }),
-            @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
-            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "bearerAuth")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/plant_records/{plantRecordId}/posts",
-        produces = { "application/json" },
-        consumes = { "multipart/form-data" }
-    )
-    ResponseEntity<PostResponse> createPost(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
-        @Parameter(name = "image", description = "", required = true) @RequestPart(value = "image", required = true) MultipartFile image,
-        @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) CreatePostFormData formData
-    );
-
-
-    /**
-     * DELETE /plant_records/{plantRecordId}/posts/{postId}
-     * 任意の投稿をplantRecordIdとpostIdから削除
-     *
-     * @param plantRecordId 生育記録ID (required)
-     * @param postId 投稿ID (required)
-     * @return ok (status code 200)
-     *         or 404(Post Not Found) (status code 404)
-     *         or 405(Validation exception) (status code 405)
-     */
-    @Operation(
-        operationId = "deletePost",
-        description = "任意の投稿をplantRecordIdとpostIdから削除",
-        tags = { "PlantRecord" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "ok"),
-            @ApiResponse(responseCode = "404", description = "404(Post Not Found)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            }),
-            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "bearerAuth")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.DELETE,
-        value = "/plant_records/{plantRecordId}/posts/{postId}",
-        produces = { "application/json" }
-    )
-    ResponseEntity<Void> deletePost(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
-        @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );
 
 
@@ -224,43 +143,6 @@ public interface PlantRecordsApi {
     )
     ResponseEntity<List<PlantRecordResponse>> getPlantRecordByUserId(
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
-    );
-
-
-    /**
-     * GET /plant_records/{plantRecordId}/posts/{postId}
-     * 任意の投稿をplantRecordIdとpostIdから取得
-     *
-     * @param plantRecordId 生育記録ID (required)
-     * @param postId 投稿ID (required)
-     * @return ok (status code 200)
-     *         or 404(User Not Found) (status code 404)
-     *         or 405(Validation exception) (status code 405)
-     */
-    @Operation(
-        operationId = "getPostById",
-        description = "任意の投稿をplantRecordIdとpostIdから取得",
-        tags = { "PlantRecord" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "ok", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = PostResponse.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "404(User Not Found)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            }),
-            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/plant_records/{plantRecordId}/posts/{postId}",
-        produces = { "application/json" }
-    )
-    ResponseEntity<PostResponse> getPostById(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
-        @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );
 
 }

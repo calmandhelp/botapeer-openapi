@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { LikeResponse } from './like-response';
 
 /**
  * 
@@ -68,5 +71,11 @@ export interface PostResponse {
      * @memberof PostResponse
      */
     'updatedAt'?: string;
+    /**
+     * 
+     * @type {Array<LikeResponse>}
+     * @memberof PostResponse
+     */
+    'likes'?: Array<LikeResponse>;
 }
 

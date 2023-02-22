@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * PlantRecordResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T04:59:25.309286Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:04:32.207759Z[Etc/UTC]")
 public class PlantRecordResponse {
 
   @JsonProperty("id")

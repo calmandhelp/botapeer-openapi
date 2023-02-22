@@ -14,9 +14,17 @@
 
 
 
-export * from './api/auth-api';
-export * from './api/place-api';
-export * from './api/plant-record-api';
-export * from './api/post-api';
-export * from './api/user-api';
+/**
+ * 
+ * @export
+ * @interface CreateLikeToPostRequest
+ */
+export interface CreateLikeToPostRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateLikeToPostRequest
+     */
+    'userId': string;
+}
 

@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -15,54 +16,33 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * PlaceResponse
+ * CreateLikeToPostRequest
  */
 
+@JsonTypeName("createLikeToPost_request")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:04:32.207759Z[Etc/UTC]")
-public class PlaceResponse {
+public class CreateLikeToPostRequest {
 
-  @JsonProperty("id")
-  private Long id;
+  @JsonProperty("userId")
+  private String userId;
 
-  @JsonProperty("name")
-  private String name;
-
-  public PlaceResponse id(Long id) {
-    this.id = id;
+  public CreateLikeToPostRequest userId(String userId) {
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get userId
+   * @return userId
   */
-  
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public Long getId() {
-    return id;
+  @NotNull 
+  @Schema(name = "userId", requiredMode = Schema.RequiredMode.REQUIRED)
+  public String getUserId() {
+    return userId;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public PlaceResponse name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-  */
-  
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
   @Override
@@ -73,22 +53,20 @@ public class PlaceResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlaceResponse placeResponse = (PlaceResponse) o;
-    return Objects.equals(this.id, placeResponse.id) &&
-        Objects.equals(this.name, placeResponse.name);
+    CreateLikeToPostRequest createLikeToPostRequest = (CreateLikeToPostRequest) o;
+    return Objects.equals(this.userId, createLikeToPostRequest.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(userId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PlaceResponse {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class CreateLikeToPostRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

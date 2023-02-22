@@ -5,6 +5,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import model.LikeResponse;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -20,7 +23,7 @@ import javax.annotation.Generated;
  * PostResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T04:59:25.309286Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:04:32.207759Z[Etc/UTC]")
 public class PostResponse {
 
   @JsonProperty("id")
@@ -48,6 +51,10 @@ public class PostResponse {
   @JsonProperty("updatedAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime updatedAt;
+
+  @JsonProperty("likes")
+  @Valid
+  private List<LikeResponse> likes = null;
 
   public PostResponse id(Long id) {
     this.id = id;
@@ -201,6 +208,33 @@ public class PostResponse {
     this.updatedAt = updatedAt;
   }
 
+  public PostResponse likes(List<LikeResponse> likes) {
+    this.likes = likes;
+    return this;
+  }
+
+  public PostResponse addLikesItem(LikeResponse likesItem) {
+    if (this.likes == null) {
+      this.likes = new ArrayList<>();
+    }
+    this.likes.add(likesItem);
+    return this;
+  }
+
+  /**
+   * Get likes
+   * @return likes
+  */
+  @Valid 
+  @Schema(name = "likes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public List<LikeResponse> getLikes() {
+    return likes;
+  }
+
+  public void setLikes(List<LikeResponse> likes) {
+    this.likes = likes;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -217,12 +251,13 @@ public class PostResponse {
         Objects.equals(this.imageUrl, postResponse.imageUrl) &&
         Objects.equals(this.status, postResponse.status) &&
         Objects.equals(this.createdAt, postResponse.createdAt) &&
-        Objects.equals(this.updatedAt, postResponse.updatedAt);
+        Objects.equals(this.updatedAt, postResponse.updatedAt) &&
+        Objects.equals(this.likes, postResponse.likes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, plantRecordId, title, article, imageUrl, status, createdAt, updatedAt);
+    return Objects.hash(id, plantRecordId, title, article, imageUrl, status, createdAt, updatedAt, likes);
   }
 
   @Override
@@ -237,6 +272,7 @@ public class PostResponse {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    likes: ").append(toIndentedString(likes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

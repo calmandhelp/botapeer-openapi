@@ -1,5 +1,6 @@
 api/AuthApi.class
 model/CreatePlantRecordRequest.class
+model/LikeResponse.class
 api/ApiUtil.class
 model/UpdateUserRequest.class
 api/UsersApi.class
@@ -8,11 +9,13 @@ model/PostResponse.class
 model/CreateUserRequest.class
 model/ErrorInner.class
 model/CreatePostFormData.class
+api/PostsApi.class
 model/JwtAuthenticationResponse.class
 model/CreatePostRequest.class
 model/UserResponse.class
 model/SignInRequest.class
 api/PlantRecordsApi.class
+model/CreateLikeToPostRequest.class
 model/PlantRecordResponse.class
 model/User.class
 model/PlaceResponse.class
