@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * CreatePostFormData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-21T12:47:55.513966Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T04:59:25.309286Z[Etc/UTC]")
 public class CreatePostFormData {
 
   @JsonProperty("title")
@@ -36,7 +36,7 @@ public class CreatePostFormData {
    * Get title
    * @return title
   */
-  @NotNull 
+  @NotNull @Size(min = 1, max = 40) 
   @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getTitle() {
     return title;
@@ -55,7 +55,7 @@ public class CreatePostFormData {
    * Get article
    * @return article
   */
-  @NotNull 
+  @NotNull @Size(min = 1, max = 10000) 
   @Schema(name = "article", requiredMode = Schema.RequiredMode.REQUIRED)
   public String getArticle() {
     return article;
