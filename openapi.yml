@@ -336,11 +336,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  '/plant_records/{plantRecordId}/posts':
+  '/posts/plant_records/{plantRecordId}':
     post:
       operationId: createPost
       tags:
-        - PlantRecord
+        - Post
       description: 投稿作成
       parameters:
         - in: path
@@ -384,12 +384,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  '/plant_records/{plantRecordId}/posts/{postId}':
+                $ref: '#/components/schemas/ErrorResponse'          
+  '/posts/{postId}/plant_records/{plantRecordId}':
     get:
-      operationId: getPostById
+      operationId: getPostByIdAndPlantRecordId
       tags:
-        - PlantRecord
+        - Post
       description: 任意の投稿をplantRecordIdとpostIdから取得
       parameters:
         - in: path
@@ -428,7 +428,7 @@ paths:
     delete:
       operationId: deletePost
       tags:
-        - PlantRecord
+        - Post
       description: 任意の投稿をplantRecordIdとpostIdから削除
       security:
         - bearerAuth: []
@@ -462,6 +462,59 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
+  '/posts/{postId}/plant_records/{plantRecordId}/likes':
+    post:
+      operationId: createLikeToPost
+      tags:
+        - Post
+      description: 投稿記事のLike作成
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: path
+          name: postId
+          description: 投稿ID
+          required: true
+          schema:
+            type: string
+            example: 1            
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                userId:
+                  type: string
+              required:
+                - userId
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '401':
+          description: 401(Unauthorized)
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   '/places':
     get:
       operationId: getPlaces
@@ -569,6 +622,29 @@ components:
           updatedAt:
             type: string
             format: date-time
+          likes:
+            type: array
+            items:
+              $ref: '#/components/schemas/LikeResponse'
+    LikeResponse:
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+        postId:
+          type: integer
+        commentId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - userId
     SignInRequest:
       properties:
         usernameOrEmail:
