@@ -1,4 +1,3 @@
-export * from './create-like-to-post-request';
 export * from './create-plant-record-request';
 export * from './create-post-form-data';
 export * from './create-post-request';
