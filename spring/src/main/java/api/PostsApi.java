@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T06:13:38.992719Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T06:53:24.984992Z[Etc/UTC]")
 @Validated
 @Tag(name = "Post", description = "the Post API")
 public interface PostsApi {
