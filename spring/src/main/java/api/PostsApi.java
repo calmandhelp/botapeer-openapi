@@ -34,13 +34,13 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T10:08:13.760013Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T11:01:38.853683Z[Etc/UTC]")
 @Validated
 @Tag(name = "Post", description = "the Post API")
 public interface PostsApi {
 
     /**
-     * POST /posts/{postId}/plant_records/{plantRecordId}/likes
+     * POST /posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes
      * 投稿記事のLike作成
      *
      * @param plantRecordId 生育記録ID (required)
@@ -69,7 +69,7 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/posts/{postId}/plant_records/{plantRecordId}/likes",
+        value = "/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes",
         produces = { "application/json" }
     )
     ResponseEntity<PostResponse> createLikeToPost(
@@ -121,7 +121,7 @@ public interface PostsApi {
 
 
     /**
-     * DELETE /posts/{postId}/plant_records/{plantRecordId}/likes
+     * DELETE /posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes
      * 投稿記事のLike削除
      *
      * @param plantRecordId 生育記録ID (required)
@@ -150,7 +150,7 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/posts/{postId}/plant_records/{plantRecordId}/likes",
+        value = "/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes",
         produces = { "application/json" }
     )
     ResponseEntity<PostResponse> deleteLikeToPost(

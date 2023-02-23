@@ -48,7 +48,7 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('createLikeToPost', 'postId', postId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('createLikeToPost', 'userId', userId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/likes`
+            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes`
                 .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)))
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
@@ -146,7 +146,7 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('deleteLikeToPost', 'postId', postId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteLikeToPost', 'userId', userId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/likes`
+            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes`
                 .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)))
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
