@@ -628,23 +628,11 @@ components:
               $ref: '#/components/schemas/LikeResponse'
     LikeResponse:
       properties:
-        id:
+        count:
           type: integer
           format: int64
-        userId:
-          type: integer
-        postId:
-          type: integer
-        commentId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-      required:
-        - userId
+        isLikeWithRequestUser:
+          type: boolean
     SignInRequest:
       properties:
         usernameOrEmail:
