@@ -482,19 +482,16 @@ paths:
           required: true
           schema:
             type: string
-            example: 1            
+            example: 1
+        - in: path
+          name: userId
+          description: ユーザーID
+          required: true
+          schema:
+            type: string
+            example: 1
       security:
         - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                userId:
-                  type: string
-              required:
-                - userId
       responses:
         '200':
           description: ok
@@ -534,19 +531,16 @@ paths:
           required: true
           schema:
             type: string
-            example: 1            
+            example: 1
+        - in: path
+          name: userId
+          description: ユーザーID
+          required: true
+          schema:
+            type: string
+            example: 1
       security:
         - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                userId:
-                  type: string
-              required:
-                - userId
       responses:
         '200':
           description: ok
