@@ -25,36 +25,12 @@ export interface LikeResponse {
      * @type {number}
      * @memberof LikeResponse
      */
-    'id'?: number;
+    'count'?: number;
     /**
      * 
-     * @type {number}
+     * @type {boolean}
      * @memberof LikeResponse
      */
-    'userId': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof LikeResponse
-     */
-    'postId'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof LikeResponse
-     */
-    'commentId'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LikeResponse
-     */
-    'createdAt'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LikeResponse
-     */
-    'updatedAt'?: string;
+    'isLikeWithRequestUser'?: boolean;
 }
 
