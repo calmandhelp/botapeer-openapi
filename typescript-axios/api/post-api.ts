@@ -35,21 +35,17 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 投稿記事のLike作成
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLikeToPost: async (plantRecordId: string, postId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('createLikeToPost', 'plantRecordId', plantRecordId)
+        createLikeToPost: async (postId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'postId' is not null or undefined
             assertParamExists('createLikeToPost', 'postId', postId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('createLikeToPost', 'userId', userId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
+            const localVarPath = `/posts/{postId}/users/{userId}/likes`
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)))
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -133,21 +129,17 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 投稿記事のLike削除
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteLikeToPost: async (plantRecordId: string, postId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('deleteLikeToPost', 'plantRecordId', plantRecordId)
+        deleteLikeToPost: async (postId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'postId' is not null or undefined
             assertParamExists('deleteLikeToPost', 'postId', postId)
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('deleteLikeToPost', 'userId', userId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
+            const localVarPath = `/posts/{postId}/users/{userId}/likes`
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)))
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -177,19 +169,15 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから削除
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePost: async (plantRecordId: string, postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('deletePost', 'plantRecordId', plantRecordId)
+        deletePost: async (postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'postId' is not null or undefined
             assertParamExists('deletePost', 'postId', postId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
+            const localVarPath = `/posts/{postId}`
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -218,19 +206,15 @@ export const PostApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから取得
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostByIdAndPlantRecordId: async (plantRecordId: string, postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'plantRecordId' is not null or undefined
-            assertParamExists('getPostByIdAndPlantRecordId', 'plantRecordId', plantRecordId)
+        getPostById: async (postId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'postId' is not null or undefined
-            assertParamExists('getPostByIdAndPlantRecordId', 'postId', postId)
-            const localVarPath = `/posts/{postId}/plant_records/{plantRecordId}`
-                .replace(`{${"plantRecordId"}}`, encodeURIComponent(String(plantRecordId)))
+            assertParamExists('getPostById', 'postId', postId)
+            const localVarPath = `/posts/{postId}`
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -266,14 +250,13 @@ export const PostApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 投稿記事のLike作成
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createLikeToPost(plantRecordId: string, postId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createLikeToPost(plantRecordId, postId, userId, options);
+        async createLikeToPost(postId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLikeToPost(postId, userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -290,36 +273,33 @@ export const PostApiFp = function(configuration?: Configuration) {
         },
         /**
          * 投稿記事のLike削除
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteLikeToPost(plantRecordId: string, postId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteLikeToPost(plantRecordId, postId, userId, options);
+        async deleteLikeToPost(postId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteLikeToPost(postId, userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから削除
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deletePost(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePost(plantRecordId, postId, options);
+        async deletePost(postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePost(postId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから取得
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPostByIdAndPlantRecordId(plantRecordId: string, postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPostByIdAndPlantRecordId(plantRecordId, postId, options);
+        async getPostById(postId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPostById(postId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -334,14 +314,13 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 投稿記事のLike作成
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLikeToPost(plantRecordId: string, postId: string, userId: string, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.createLikeToPost(plantRecordId, postId, userId, options).then((request) => request(axios, basePath));
+        createLikeToPost(postId: string, userId: string, options?: any): AxiosPromise<PostResponse> {
+            return localVarFp.createLikeToPost(postId, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 投稿作成
@@ -356,34 +335,31 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 投稿記事のLike削除
-         * @param {string} plantRecordId 生育記録ID
          * @param {string} postId 投稿ID
          * @param {string} userId ユーザーID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteLikeToPost(plantRecordId: string, postId: string, userId: string, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.deleteLikeToPost(plantRecordId, postId, userId, options).then((request) => request(axios, basePath));
+        deleteLikeToPost(postId: string, userId: string, options?: any): AxiosPromise<PostResponse> {
+            return localVarFp.deleteLikeToPost(postId, userId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから削除
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから削除
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePost(plantRecordId: string, postId: string, options?: any): AxiosPromise<void> {
-            return localVarFp.deletePost(plantRecordId, postId, options).then((request) => request(axios, basePath));
+        deletePost(postId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deletePost(postId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 任意の投稿をplantRecordIdとpostIdから取得
-         * @param {string} plantRecordId 生育記録ID
+         * 任意の投稿をpostIdから取得
          * @param {string} postId 投稿ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPostByIdAndPlantRecordId(plantRecordId: string, postId: string, options?: any): AxiosPromise<PostResponse> {
-            return localVarFp.getPostByIdAndPlantRecordId(plantRecordId, postId, options).then((request) => request(axios, basePath));
+        getPostById(postId: string, options?: any): AxiosPromise<PostResponse> {
+            return localVarFp.getPostById(postId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -397,15 +373,14 @@ export const PostApiFactory = function (configuration?: Configuration, basePath?
 export class PostApi extends BaseAPI {
     /**
      * 投稿記事のLike作成
-     * @param {string} plantRecordId 生育記録ID
      * @param {string} postId 投稿ID
      * @param {string} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PostApi
      */
-    public createLikeToPost(plantRecordId: string, postId: string, userId: string, options?: AxiosRequestConfig) {
-        return PostApiFp(this.configuration).createLikeToPost(plantRecordId, postId, userId, options).then((request) => request(this.axios, this.basePath));
+    public createLikeToPost(postId: string, userId: string, options?: AxiosRequestConfig) {
+        return PostApiFp(this.configuration).createLikeToPost(postId, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -423,38 +398,35 @@ export class PostApi extends BaseAPI {
 
     /**
      * 投稿記事のLike削除
-     * @param {string} plantRecordId 生育記録ID
      * @param {string} postId 投稿ID
      * @param {string} userId ユーザーID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PostApi
      */
-    public deleteLikeToPost(plantRecordId: string, postId: string, userId: string, options?: AxiosRequestConfig) {
-        return PostApiFp(this.configuration).deleteLikeToPost(plantRecordId, postId, userId, options).then((request) => request(this.axios, this.basePath));
+    public deleteLikeToPost(postId: string, userId: string, options?: AxiosRequestConfig) {
+        return PostApiFp(this.configuration).deleteLikeToPost(postId, userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 任意の投稿をplantRecordIdとpostIdから削除
-     * @param {string} plantRecordId 生育記録ID
+     * 任意の投稿をpostIdから削除
      * @param {string} postId 投稿ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PostApi
      */
-    public deletePost(plantRecordId: string, postId: string, options?: AxiosRequestConfig) {
-        return PostApiFp(this.configuration).deletePost(plantRecordId, postId, options).then((request) => request(this.axios, this.basePath));
+    public deletePost(postId: string, options?: AxiosRequestConfig) {
+        return PostApiFp(this.configuration).deletePost(postId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 任意の投稿をplantRecordIdとpostIdから取得
-     * @param {string} plantRecordId 生育記録ID
+     * 任意の投稿をpostIdから取得
      * @param {string} postId 投稿ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PostApi
      */
-    public getPostByIdAndPlantRecordId(plantRecordId: string, postId: string, options?: AxiosRequestConfig) {
-        return PostApiFp(this.configuration).getPostByIdAndPlantRecordId(plantRecordId, postId, options).then((request) => request(this.axios, this.basePath));
+    public getPostById(postId: string, options?: AxiosRequestConfig) {
+        return PostApiFp(this.configuration).getPostById(postId, options).then((request) => request(this.axios, this.basePath));
     }
 }

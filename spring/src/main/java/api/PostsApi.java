@@ -34,16 +34,15 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T11:01:38.853683Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
 @Validated
 @Tag(name = "Post", description = "the Post API")
 public interface PostsApi {
 
     /**
-     * POST /posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes
+     * POST /posts/{postId}/users/{userId}/likes
      * 投稿記事のLike作成
      *
-     * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
@@ -69,11 +68,10 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes",
+        value = "/posts/{postId}/users/{userId}/likes",
         produces = { "application/json" }
     )
     ResponseEntity<PostResponse> createLikeToPost(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId,
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
@@ -121,10 +119,9 @@ public interface PostsApi {
 
 
     /**
-     * DELETE /posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes
+     * DELETE /posts/{postId}/users/{userId}/likes
      * 投稿記事のLike削除
      *
-     * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
      * @param userId ユーザーID (required)
      * @return ok (status code 200)
@@ -150,21 +147,19 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes",
+        value = "/posts/{postId}/users/{userId}/likes",
         produces = { "application/json" }
     )
     ResponseEntity<PostResponse> deleteLikeToPost(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId,
         @Parameter(name = "userId", description = "ユーザーID", required = true, in = ParameterIn.PATH) @PathVariable("userId") String userId
     );
 
 
     /**
-     * DELETE /posts/{postId}/plant_records/{plantRecordId}
-     * 任意の投稿をplantRecordIdとpostIdから削除
+     * DELETE /posts/{postId}
+     * 任意の投稿をpostIdから削除
      *
-     * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
      * @return ok (status code 200)
      *         or 404(Post Not Found) (status code 404)
@@ -172,7 +167,7 @@ public interface PostsApi {
      */
     @Operation(
         operationId = "deletePost",
-        description = "任意の投稿をplantRecordIdとpostIdから削除",
+        description = "任意の投稿をpostIdから削除",
         tags = { "Post" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok"),
@@ -189,28 +184,26 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/posts/{postId}/plant_records/{plantRecordId}",
+        value = "/posts/{postId}",
         produces = { "application/json" }
     )
     ResponseEntity<Void> deletePost(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );
 
 
     /**
-     * GET /posts/{postId}/plant_records/{plantRecordId}
-     * 任意の投稿をplantRecordIdとpostIdから取得
+     * GET /posts/{postId}
+     * 任意の投稿をpostIdから取得
      *
-     * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
      * @return ok (status code 200)
      *         or 404(User Not Found) (status code 404)
      *         or 405(Validation exception) (status code 405)
      */
     @Operation(
-        operationId = "getPostByIdAndPlantRecordId",
-        description = "任意の投稿をplantRecordIdとpostIdから取得",
+        operationId = "getPostById",
+        description = "任意の投稿をpostIdから取得",
         tags = { "Post" },
         responses = {
             @ApiResponse(responseCode = "200", description = "ok", content = {
@@ -226,11 +219,10 @@ public interface PostsApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/posts/{postId}/plant_records/{plantRecordId}",
+        value = "/posts/{postId}",
         produces = { "application/json" }
     )
-    ResponseEntity<PostResponse> getPostByIdAndPlantRecordId(
-        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
+    ResponseEntity<PostResponse> getPostById(
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId
     );
 
