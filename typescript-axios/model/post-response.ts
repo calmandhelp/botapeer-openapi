@@ -73,9 +73,9 @@ export interface PostResponse {
     'updatedAt'?: string;
     /**
      * 
-     * @type {Array<LikeResponse>}
+     * @type {LikeResponse}
      * @memberof PostResponse
      */
-    'likes'?: Array<LikeResponse>;
+    'like'?: LikeResponse;
 }
 
