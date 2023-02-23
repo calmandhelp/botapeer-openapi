@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * JwtAuthenticationResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:46:44.548866Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T06:13:38.992719Z[Etc/UTC]")
 public class JwtAuthenticationResponse {
 
   @JsonProperty("accessToken")
