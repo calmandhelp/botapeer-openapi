@@ -515,6 +515,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteLikeToPost
+      tags:
+        - Post
+      description: 投稿記事のLike削除
+      parameters:
+        - in: path
+          name: plantRecordId
+          description: 生育記録ID
+          required: true
+          schema:
+            type: string
+            example: 1
+        - in: path
+          name: postId
+          description: 投稿ID
+          required: true
+          schema:
+            type: string
+            example: 1            
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                userId:
+                  type: string
+              required:
+                - userId
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '401':
+          description: 401(Unauthorized)
+          headers:
+            http_status:
+              description: HTTPステータス
+              schema:
+                type: integer
+        '405':
+          description: 405(Validation exception)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'                
   '/places':
     get:
       operationId: getPlaces
