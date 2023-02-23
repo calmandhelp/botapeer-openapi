@@ -462,7 +462,7 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-  '/posts/{postId}/plant_records/{plantRecordId}/likes':
+  '/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes':
     post:
       operationId: createLikeToPost
       tags:
