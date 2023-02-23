@@ -5,6 +5,7 @@
  */
 package api;
 
+import model.CreateLikeToPostRequest;
 import model.CreatePostFormData;
 import model.ErrorResponse;
 import model.PostResponse;
@@ -34,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:04:32.207759Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-22T07:46:44.548866Z[Etc/UTC]")
 @Validated
 @Tag(name = "Post", description = "the Post API")
 public interface PostsApi {
@@ -45,7 +46,7 @@ public interface PostsApi {
      *
      * @param plantRecordId 生育記録ID (required)
      * @param postId 投稿ID (required)
-     * @param userId  (required)
+     * @param createLikeToPostRequest  (required)
      * @return ok (status code 200)
      *         or 401(Unauthorized) (status code 401)
      *         or 405(Validation exception) (status code 405)
@@ -71,12 +72,12 @@ public interface PostsApi {
         method = RequestMethod.POST,
         value = "/posts/{postId}/plant_records/{plantRecordId}/likes",
         produces = { "application/json" },
-        consumes = { "multipart/form-data" }
+        consumes = { "application/json" }
     )
     ResponseEntity<PostResponse> createLikeToPost(
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId,
-        @Parameter(name = "userId", description = "", required = true) @Valid @RequestParam(value = "userId", required = true) String userId
+        @Parameter(name = "CreateLikeToPostRequest", description = "", required = true) @Valid @RequestBody CreateLikeToPostRequest createLikeToPostRequest
     );
 
 
