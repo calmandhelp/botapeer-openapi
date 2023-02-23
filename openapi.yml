@@ -385,20 +385,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'          
-  '/posts/{postId}/plant_records/{plantRecordId}':
+  '/posts/{postId}':
     get:
-      operationId: getPostByIdAndPlantRecordId
+      operationId: getPostById
       tags:
         - Post
-      description: 任意の投稿をplantRecordIdとpostIdから取得
+      description: 任意の投稿をpostIdから取得
       parameters:
-        - in: path
-          name: plantRecordId
-          description: 生育記録ID
-          required: true
-          schema:
-            type: string
-            example: 1
         - in: path
           name: postId
           description: 投稿ID
@@ -429,17 +422,10 @@ paths:
       operationId: deletePost
       tags:
         - Post
-      description: 任意の投稿をplantRecordIdとpostIdから削除
+      description: 任意の投稿をpostIdから削除
       security:
         - bearerAuth: []
       parameters:
-        - in: path
-          name: plantRecordId
-          description: 生育記録ID
-          required: true
-          schema:
-            type: string
-            example: 1
         - in: path
           name: postId
           description: 投稿ID
@@ -462,20 +448,13 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/ErrorResponse'
-  '/posts/{postId}/plant_records/{plantRecordId}/users/{userId}/likes':
+  '/posts/{postId}/users/{userId}/likes':
     post:
       operationId: createLikeToPost
       tags:
         - Post
       description: 投稿記事のLike作成
       parameters:
-        - in: path
-          name: plantRecordId
-          description: 生育記録ID
-          required: true
-          schema:
-            type: string
-            example: 1
         - in: path
           name: postId
           description: 投稿ID
@@ -518,13 +497,6 @@ paths:
         - Post
       description: 投稿記事のLike削除
       parameters:
-        - in: path
-          name: plantRecordId
-          description: 生育記録ID
-          required: true
-          schema:
-            type: string
-            example: 1
         - in: path
           name: postId
           description: 投稿ID
