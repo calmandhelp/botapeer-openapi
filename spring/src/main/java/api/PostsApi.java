@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T06:53:24.984992Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T09:16:40.329483Z[Etc/UTC]")
 @Validated
 @Tag(name = "Post", description = "the Post API")
 public interface PostsApi {
@@ -119,6 +119,47 @@ public interface PostsApi {
         @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
         @Parameter(name = "image", description = "", required = true) @RequestPart(value = "image", required = true) MultipartFile image,
         @Parameter(name = "formData", description = "") @Valid @RequestPart(value = "formData", required = false) CreatePostFormData formData
+    );
+
+
+    /**
+     * DELETE /posts/{postId}/plant_records/{plantRecordId}/likes
+     * 投稿記事のLike削除
+     *
+     * @param plantRecordId 生育記録ID (required)
+     * @param postId 投稿ID (required)
+     * @param createLikeToPostRequest  (required)
+     * @return ok (status code 200)
+     *         or 401(Unauthorized) (status code 401)
+     *         or 405(Validation exception) (status code 405)
+     */
+    @Operation(
+        operationId = "deleteLikeToPost",
+        description = "投稿記事のLike削除",
+        tags = { "Post" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "ok", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = PostResponse.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "401(Unauthorized)"),
+            @ApiResponse(responseCode = "405", description = "405(Validation exception)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))
+            })
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/posts/{postId}/plant_records/{plantRecordId}/likes",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    ResponseEntity<PostResponse> deleteLikeToPost(
+        @Parameter(name = "plantRecordId", description = "生育記録ID", required = true, in = ParameterIn.PATH) @PathVariable("plantRecordId") String plantRecordId,
+        @Parameter(name = "postId", description = "投稿ID", required = true, in = ParameterIn.PATH) @PathVariable("postId") String postId,
+        @Parameter(name = "CreateLikeToPostRequest", description = "", required = true) @Valid @RequestBody CreateLikeToPostRequest createLikeToPostRequest
     );
 
 
