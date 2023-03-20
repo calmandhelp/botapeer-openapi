@@ -24,36 +24,28 @@ import javax.annotation.Generated;
  * PlantRecordResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class PlantRecordResponse {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("title")
   private String title;
 
-  @JsonProperty("alive")
   private Integer alive;
 
-  @JsonProperty("endDate")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime endDate;
 
-  @JsonProperty("createdAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime createdAt;
 
-  @JsonProperty("updatedAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime updatedAt;
 
-  @JsonProperty("place")
   private PlaceResponse place;
 
-  @JsonProperty("posts")
   @Valid
-  private List<PostResponse> posts = null;
+  private List<@Valid PostResponse> posts;
 
   public PlantRecordResponse id(Long id) {
     this.id = id;
@@ -66,6 +58,7 @@ public class PlantRecordResponse {
   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public Long getId() {
     return id;
   }
@@ -85,6 +78,7 @@ public class PlantRecordResponse {
   */
   @Size(min = 1, max = 40) 
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
   public String getTitle() {
     return title;
   }
@@ -104,6 +98,7 @@ public class PlantRecordResponse {
   */
   
   @Schema(name = "alive", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("alive")
   public Integer getAlive() {
     return alive;
   }
@@ -123,6 +118,7 @@ public class PlantRecordResponse {
   */
   @Valid 
   @Schema(name = "endDate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("endDate")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
@@ -142,6 +138,7 @@ public class PlantRecordResponse {
   */
   @Valid 
   @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdAt")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -161,6 +158,7 @@ public class PlantRecordResponse {
   */
   @Valid 
   @Schema(name = "updatedAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updatedAt")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -180,6 +178,7 @@ public class PlantRecordResponse {
   */
   @Valid 
   @Schema(name = "place", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("place")
   public PlaceResponse getPlace() {
     return place;
   }
@@ -188,7 +187,7 @@ public class PlantRecordResponse {
     this.place = place;
   }
 
-  public PlantRecordResponse posts(List<PostResponse> posts) {
+  public PlantRecordResponse posts(List<@Valid PostResponse> posts) {
     this.posts = posts;
     return this;
   }
@@ -207,11 +206,12 @@ public class PlantRecordResponse {
   */
   @Valid 
   @Schema(name = "posts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public List<PostResponse> getPosts() {
+  @JsonProperty("posts")
+  public List<@Valid PostResponse> getPosts() {
     return posts;
   }
 
-  public void setPosts(List<PostResponse> posts) {
+  public void setPosts(List<@Valid PostResponse> posts) {
     this.posts = posts;
   }
 

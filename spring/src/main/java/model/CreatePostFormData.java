@@ -18,14 +18,29 @@ import javax.annotation.Generated;
  * CreatePostFormData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class CreatePostFormData {
 
-  @JsonProperty("title")
   private String title;
 
-  @JsonProperty("article")
   private String article;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link CreatePostFormData#CreatePostFormData(String, String)}
+   */
+  @Deprecated
+  public CreatePostFormData() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CreatePostFormData(String title, String article) {
+    this.title = title;
+    this.article = article;
+  }
 
   public CreatePostFormData title(String title) {
     this.title = title;
@@ -38,6 +53,7 @@ public class CreatePostFormData {
   */
   @NotNull @Size(min = 1, max = 40) 
   @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("title")
   public String getTitle() {
     return title;
   }
@@ -57,6 +73,7 @@ public class CreatePostFormData {
   */
   @NotNull @Size(min = 1, max = 10000) 
   @Schema(name = "article", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("article")
   public String getArticle() {
     return article;
   }

@@ -18,17 +18,32 @@ import javax.annotation.Generated;
  * CreateUserRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class CreateUserRequest {
 
-  @JsonProperty("name")
   private String name;
 
-  @JsonProperty("email")
   private String email;
 
-  @JsonProperty("password")
   private String password;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link CreateUserRequest#CreateUserRequest(String, String, String)}
+   */
+  @Deprecated
+  public CreateUserRequest() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CreateUserRequest(String name, String email, String password) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+  }
 
   public CreateUserRequest name(String name) {
     this.name = name;
@@ -41,6 +56,7 @@ public class CreateUserRequest {
   */
   @NotNull @Size(min = 1, max = 15) 
   @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
@@ -58,8 +74,9 @@ public class CreateUserRequest {
    * Get email
    * @return email
   */
-  @NotNull @Size(min = 1, max = 255) @Email
+  @NotNull @Size(min = 1, max = 255) @javax.validation.constraints.Email
   @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("email")
   public String getEmail() {
     return email;
   }
@@ -79,6 +96,7 @@ public class CreateUserRequest {
   */
   @NotNull @Size(min = 8, max = 20) 
   @Schema(name = "password", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("password")
   public String getPassword() {
     return password;
   }

@@ -18,28 +18,21 @@ import javax.annotation.Generated;
  * UserResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class UserResponse {
 
-  @JsonProperty("id")
   private Integer id;
 
-  @JsonProperty("name")
   private String name;
 
-  @JsonProperty("email")
   private String email;
 
-  @JsonProperty("status")
   private Integer status;
 
-  @JsonProperty("description")
   private String description;
 
-  @JsonProperty("profileImage")
   private String profileImage;
 
-  @JsonProperty("coverImage")
   private String coverImage;
 
   public UserResponse id(Integer id) {
@@ -53,6 +46,7 @@ public class UserResponse {
   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public Integer getId() {
     return id;
   }
@@ -72,6 +66,7 @@ public class UserResponse {
   */
   @Size(min = 1, max = 15) 
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
@@ -89,8 +84,9 @@ public class UserResponse {
    * Get email
    * @return email
   */
-  @Email
+  @javax.validation.constraints.Email
   @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("email")
   public String getEmail() {
     return email;
   }
@@ -110,6 +106,7 @@ public class UserResponse {
   */
   
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
   public Integer getStatus() {
     return status;
   }
@@ -129,6 +126,7 @@ public class UserResponse {
   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
   public String getDescription() {
     return description;
   }
@@ -148,6 +146,7 @@ public class UserResponse {
   */
   
   @Schema(name = "profileImage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("profileImage")
   public String getProfileImage() {
     return profileImage;
   }
@@ -167,6 +166,7 @@ public class UserResponse {
   */
   
   @Schema(name = "coverImage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("coverImage")
   public String getCoverImage() {
     return coverImage;
   }

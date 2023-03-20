@@ -18,17 +18,31 @@ import javax.annotation.Generated;
  * UpdateUserFormData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class UpdateUserFormData {
 
-  @JsonProperty("name")
   private String name;
 
-  @JsonProperty("email")
   private String email;
 
-  @JsonProperty("description")
   private String description;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link UpdateUserFormData#UpdateUserFormData(String, String)}
+   */
+  @Deprecated
+  public UpdateUserFormData() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public UpdateUserFormData(String name, String email) {
+    this.name = name;
+    this.email = email;
+  }
 
   public UpdateUserFormData name(String name) {
     this.name = name;
@@ -41,6 +55,7 @@ public class UpdateUserFormData {
   */
   @NotNull @Size(min = 1, max = 15) 
   @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
@@ -58,8 +73,9 @@ public class UpdateUserFormData {
    * Get email
    * @return email
   */
-  @NotNull @Size(min = 1, max = 255) @Email
+  @NotNull @Size(min = 1, max = 255) @javax.validation.constraints.Email
   @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("email")
   public String getEmail() {
     return email;
   }
@@ -79,6 +95,7 @@ public class UpdateUserFormData {
   */
   
   @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
   public String getDescription() {
     return description;
   }

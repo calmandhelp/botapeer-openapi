@@ -4,8 +4,13 @@ info:
   description: Botapeer API
   version: 1.0.0
 servers:
-  - url: http://localhost:8081/api
-  - url: http://api.botapeer.com/api
+  - url: "{server}/api"
+    variables:
+      server:
+        default: http://localhost:8081
+        enum:
+          - http://localhost:8081
+          - https://api.botapeer.com
 paths:
   '/users':
     get:

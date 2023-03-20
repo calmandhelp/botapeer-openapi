@@ -21,16 +21,13 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("updateUser_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class UpdateUserRequest {
 
-  @JsonProperty("formData")
   private UpdateUserFormData formData;
 
-  @JsonProperty("profileImage")
   private org.springframework.core.io.Resource profileImage;
 
-  @JsonProperty("coverImage")
   private org.springframework.core.io.Resource coverImage;
 
   public UpdateUserRequest formData(UpdateUserFormData formData) {
@@ -44,6 +41,7 @@ public class UpdateUserRequest {
   */
   @Valid 
   @Schema(name = "formData", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("formData")
   public UpdateUserFormData getFormData() {
     return formData;
   }
@@ -63,6 +61,7 @@ public class UpdateUserRequest {
   */
   @Valid 
   @Schema(name = "profileImage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("profileImage")
   public org.springframework.core.io.Resource getProfileImage() {
     return profileImage;
   }
@@ -82,6 +81,7 @@ public class UpdateUserRequest {
   */
   @Valid 
   @Schema(name = "coverImage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("coverImage")
   public org.springframework.core.io.Resource getCoverImage() {
     return coverImage;
   }

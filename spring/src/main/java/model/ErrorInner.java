@@ -20,13 +20,11 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("Error_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class ErrorInner {
 
-  @JsonProperty("code")
   private Integer code;
 
-  @JsonProperty("message")
   private String message;
 
   public ErrorInner code(Integer code) {
@@ -40,6 +38,7 @@ public class ErrorInner {
   */
   
   @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("code")
   public Integer getCode() {
     return code;
   }
@@ -59,6 +58,7 @@ public class ErrorInner {
   */
   
   @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("message")
   public String getMessage() {
     return message;
   }

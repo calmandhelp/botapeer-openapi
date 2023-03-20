@@ -18,14 +18,29 @@ import javax.annotation.Generated;
  * JwtAuthenticationResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class JwtAuthenticationResponse {
 
-  @JsonProperty("accessToken")
   private String accessToken;
 
-  @JsonProperty("tokenType")
   private String tokenType;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link JwtAuthenticationResponse#JwtAuthenticationResponse(String, String)}
+   */
+  @Deprecated
+  public JwtAuthenticationResponse() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public JwtAuthenticationResponse(String accessToken, String tokenType) {
+    this.accessToken = accessToken;
+    this.tokenType = tokenType;
+  }
 
   public JwtAuthenticationResponse accessToken(String accessToken) {
     this.accessToken = accessToken;
@@ -38,6 +53,7 @@ public class JwtAuthenticationResponse {
   */
   @NotNull 
   @Schema(name = "accessToken", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("accessToken")
   public String getAccessToken() {
     return accessToken;
   }
@@ -57,6 +73,7 @@ public class JwtAuthenticationResponse {
   */
   @NotNull 
   @Schema(name = "tokenType", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("tokenType")
   public String getTokenType() {
     return tokenType;
   }

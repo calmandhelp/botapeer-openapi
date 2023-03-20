@@ -21,14 +21,28 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("createPost_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class CreatePostRequest {
 
-  @JsonProperty("formData")
   private CreatePostFormData formData;
 
-  @JsonProperty("image")
   private org.springframework.core.io.Resource image;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link CreatePostRequest#CreatePostRequest(org.springframework.core.io.Resource)}
+   */
+  @Deprecated
+  public CreatePostRequest() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CreatePostRequest(org.springframework.core.io.Resource image) {
+    this.image = image;
+  }
 
   public CreatePostRequest formData(CreatePostFormData formData) {
     this.formData = formData;
@@ -41,6 +55,7 @@ public class CreatePostRequest {
   */
   @Valid 
   @Schema(name = "formData", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("formData")
   public CreatePostFormData getFormData() {
     return formData;
   }
@@ -60,6 +75,7 @@ public class CreatePostRequest {
   */
   @NotNull @Valid 
   @Schema(name = "image", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("image")
   public org.springframework.core.io.Resource getImage() {
     return image;
   }

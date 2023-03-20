@@ -1,6 +1,23 @@
 openapi = openapi.yml
 config = config.json
 
+generate-docker-typescript-axios-prod: $(openapi) $(config) 
+	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+    -i /local/$(openapi) \
+    -g typescript-axios \
+    -o /local/typescript-axios \
+		-c /local/$(config) \
+		-s server=https://api.botapeer.com \
+		--global-property skipFormModel=false
+
+generate-docker-typescript-axios-dev: $(openapi) $(config) 
+	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+    -i /local/$(openapi) \
+    -g typescript-axios \
+    -o /local/typescript-axios \
+		-c /local/$(config) \
+		--global-property skipFormModel=false
+
 generate-docker-spring: $(openapi) $(config) 
 	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
 		-i /local/$(openapi) \
@@ -11,11 +28,4 @@ generate-docker-spring: $(openapi) $(config)
 		--library spring-boot \
 		--global-property skipFormModel=false \
 		--global-property beanValidation=true
-
-generate-docker-typescript-axios: $(openapi) $(config) 
-	docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
-    -i /local/$(openapi) \
-    -g typescript-axios \
-    -o /local/typescript-axios \
-		-c /local/$(config) \
-		--global-property skipFormModel=false
+		

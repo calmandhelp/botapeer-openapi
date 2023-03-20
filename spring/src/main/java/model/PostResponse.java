@@ -21,36 +21,27 @@ import javax.annotation.Generated;
  * PostResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class PostResponse {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("plantRecordId")
   private Long plantRecordId;
 
-  @JsonProperty("title")
   private String title;
 
-  @JsonProperty("article")
   private String article;
 
-  @JsonProperty("imageUrl")
   private String imageUrl;
 
-  @JsonProperty("status")
   private Integer status;
 
-  @JsonProperty("createdAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime createdAt;
 
-  @JsonProperty("updatedAt")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime updatedAt;
 
-  @JsonProperty("like")
   private LikeResponse like;
 
   public PostResponse id(Long id) {
@@ -64,6 +55,7 @@ public class PostResponse {
   */
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("id")
   public Long getId() {
     return id;
   }
@@ -83,6 +75,7 @@ public class PostResponse {
   */
   
   @Schema(name = "plantRecordId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("plantRecordId")
   public Long getPlantRecordId() {
     return plantRecordId;
   }
@@ -102,6 +95,7 @@ public class PostResponse {
   */
   
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
   public String getTitle() {
     return title;
   }
@@ -121,6 +115,7 @@ public class PostResponse {
   */
   
   @Schema(name = "article", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("article")
   public String getArticle() {
     return article;
   }
@@ -140,6 +135,7 @@ public class PostResponse {
   */
   
   @Schema(name = "imageUrl", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("imageUrl")
   public String getImageUrl() {
     return imageUrl;
   }
@@ -159,6 +155,7 @@ public class PostResponse {
   */
   
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
   public Integer getStatus() {
     return status;
   }
@@ -178,6 +175,7 @@ public class PostResponse {
   */
   @Valid 
   @Schema(name = "createdAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("createdAt")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -197,6 +195,7 @@ public class PostResponse {
   */
   @Valid 
   @Schema(name = "updatedAt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("updatedAt")
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -216,6 +215,7 @@ public class PostResponse {
   */
   @Valid 
   @Schema(name = "like", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("like")
   public LikeResponse getLike() {
     return like;
   }

@@ -9,14 +9,14 @@ model/PostResponse.class
 model/CreateUserRequest.class
 model/ErrorInner.class
 model/CreatePostFormData.class
-api/PostsApi.class
 model/JwtAuthenticationResponse.class
+api/PostsApi.class
 model/CreatePostRequest.class
-model/UserResponse.class
 model/SignInRequest.class
-api/PlantRecordsApi.class
+model/UserResponse.class
 model/CreateLikeToPostRequest.class
 model/PlantRecordResponse.class
+api/PlantRecordsApi.class
 model/User.class
 model/PlaceResponse.class
 api/PlacesApi.class
