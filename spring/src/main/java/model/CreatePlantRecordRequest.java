@@ -18,13 +18,11 @@ import javax.annotation.Generated;
  * CreatePlantRecordRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class CreatePlantRecordRequest {
 
-  @JsonProperty("title")
   private String title;
 
-  @JsonProperty("placeId")
   private Long placeId;
 
   public CreatePlantRecordRequest title(String title) {
@@ -38,6 +36,7 @@ public class CreatePlantRecordRequest {
   */
   @Size(min = 1, max = 40) 
   @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("title")
   public String getTitle() {
     return title;
   }
@@ -57,6 +56,7 @@ public class CreatePlantRecordRequest {
   */
   
   @Schema(name = "placeId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("placeId")
   public Long getPlaceId() {
     return placeId;
   }

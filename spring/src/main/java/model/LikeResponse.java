@@ -18,13 +18,11 @@ import javax.annotation.Generated;
  * LikeResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class LikeResponse {
 
-  @JsonProperty("count")
   private Long count;
 
-  @JsonProperty("isLikeWithRequestUser")
   private Boolean isLikeWithRequestUser;
 
   public LikeResponse count(Long count) {
@@ -38,6 +36,7 @@ public class LikeResponse {
   */
   
   @Schema(name = "count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("count")
   public Long getCount() {
     return count;
   }
@@ -57,6 +56,7 @@ public class LikeResponse {
   */
   
   @Schema(name = "isLikeWithRequestUser", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("isLikeWithRequestUser")
   public Boolean getIsLikeWithRequestUser() {
     return isLikeWithRequestUser;
   }

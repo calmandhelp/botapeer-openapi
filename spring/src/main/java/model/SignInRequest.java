@@ -18,14 +18,29 @@ import javax.annotation.Generated;
  * SignInRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class SignInRequest {
 
-  @JsonProperty("usernameOrEmail")
   private String usernameOrEmail;
 
-  @JsonProperty("password")
   private String password;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link SignInRequest#SignInRequest(String, String)}
+   */
+  @Deprecated
+  public SignInRequest() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public SignInRequest(String usernameOrEmail, String password) {
+    this.usernameOrEmail = usernameOrEmail;
+    this.password = password;
+  }
 
   public SignInRequest usernameOrEmail(String usernameOrEmail) {
     this.usernameOrEmail = usernameOrEmail;
@@ -38,6 +53,7 @@ public class SignInRequest {
   */
   @NotNull 
   @Schema(name = "usernameOrEmail", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("usernameOrEmail")
   public String getUsernameOrEmail() {
     return usernameOrEmail;
   }
@@ -57,6 +73,7 @@ public class SignInRequest {
   */
   @NotNull 
   @Schema(name = "password", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("password")
   public String getPassword() {
     return password;
   }

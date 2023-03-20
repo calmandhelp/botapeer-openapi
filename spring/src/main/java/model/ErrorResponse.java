@@ -21,14 +21,13 @@ import javax.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-02-23T12:58:42.929602Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
 public class ErrorResponse {
 
-  @JsonProperty("errors")
   @Valid
-  private List<ErrorInner> errors = null;
+  private List<@Valid ErrorInner> errors;
 
-  public ErrorResponse errors(List<ErrorInner> errors) {
+  public ErrorResponse errors(List<@Valid ErrorInner> errors) {
     this.errors = errors;
     return this;
   }
@@ -47,11 +46,12 @@ public class ErrorResponse {
   */
   @Valid 
   @Schema(name = "errors", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  public List<ErrorInner> getErrors() {
+  @JsonProperty("errors")
+  public List<@Valid ErrorInner> getErrors() {
     return errors;
   }
 
-  public void setErrors(List<ErrorInner> errors) {
+  public void setErrors(List<@Valid ErrorInner> errors) {
     this.errors = errors;
   }
 
