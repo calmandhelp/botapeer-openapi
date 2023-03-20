@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:35:26.228503Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-03-20T08:41:54.051854Z[Etc/UTC]")
 @Validated
 @Tag(name = "Place", description = "the Place API")
 public interface PlacesApi {
