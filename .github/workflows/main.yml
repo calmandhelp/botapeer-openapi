@@ -11,20 +11,7 @@ jobs:
       - name: リポジトリのチェックアウト
         uses: actions/checkout@v3
       - name: typescriptのコード生成
-        run: make generate-docker-typescript-axios-dev
-      - name: JDK 11のセットアップ
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          distribution: 'adopt'
-      - name: springのコード生成
-        run: make generate-docker-spring
-      - name: jarファイル生成（Mavenでビルド）
-        run: cd spring && mvn clean package
-      - name: mavenパッケージのデプロイ
-        run: cd spring && mvn deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+        run: make generate-docker-typescript-axios-prod
       - name: 生成コードのコミット
         run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
