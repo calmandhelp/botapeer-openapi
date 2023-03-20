@@ -7,7 +7,7 @@ generate-docker-typescript-axios-prod: $(openapi) $(config)
     -g typescript-axios \
     -o /local/typescript-axios \
 		-c /local/$(config) \
-		-s http://api.botapeer.com \
+		-s https://api.botapeer.com \
 		--global-property skipFormModel=false
 
 generate-docker-typescript-axios-dev: $(openapi) $(config) 

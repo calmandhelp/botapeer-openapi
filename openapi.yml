@@ -10,7 +10,7 @@ servers:
         default: http://localhost:8081
         enum:
           - http://localhost:8081
-          - http://api.botapeer.com
+          - https://api.botapeer.com
 paths:
   '/users':
     get:
