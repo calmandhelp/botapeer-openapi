@@ -1,6 +1,6 @@
 # botapeer-openapi
 botapeerのバックエンドAPIの仕様を記述したリポジトリです。
-急がれている方は[openapi.yml](https://github.com/calmandhelp/botapeer-openapi/blob/main/openapi.yml)の記述を[swagger-viwer](https://chrome.google.com/webstore/detail/swagger-viewer/nfmkaonpdmaglhjjlggfhlndofdldfag?hl=ja)のchrome拡張機能利用してご覧いただくか、
+急がれている方は[openapi.yml](https://github.com/calmandhelp/botapeer-openapi/blob/main/openapi.yml)の記述を[swagger-viewer](https://chrome.google.com/webstore/detail/swagger-viewer/nfmkaonpdmaglhjjlggfhlndofdldfag?hl=ja)のchrome拡張機能利用してご覧いただくか、
 swaggerエディタの[petstore](https://editor.swagger.io/)にペーストしていただいて確認していただくのが早いです。 
 
 ## APIの概要
@@ -54,7 +54,7 @@ public ResponseEntity<UserResponse> findUserById(@PathVariable String userId) {
 ```
 
 ### フロントエンド利用時
-botapeer-front（フロントエンド）で利用する際はsubmoduleからモデルとapiを読み込みます。
+botapeer-front（Typescript）で利用する際はsubmoduleからモデルとapiを読み込みます。
 ```typescript
 import { UserResponse, UserApi, ErrorResponse } from 'botapeer-openapi/typescript-axios';
 
