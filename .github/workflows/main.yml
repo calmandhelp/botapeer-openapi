@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      test:
+        type: string
+        description: 'test'
 jobs:
   generate-code:
     runs-on: ubuntu-latest
